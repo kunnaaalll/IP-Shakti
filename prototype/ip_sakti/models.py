@@ -35,6 +35,11 @@ class RoadmapStep:
     citations: List[Citation]
     risk_level: str  # low | medium | high | blocker
     timeline_note: Optional[str] = None
+    phase: Optional[str] = None
+    deliverable: Optional[str] = None
+    statutory_hazard: Optional[str] = None
+    governing_authority: Optional[str] = None
+    operational_guidance: Optional[str] = None
 
 
 @dataclass

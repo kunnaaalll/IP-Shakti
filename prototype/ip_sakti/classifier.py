@@ -5,6 +5,7 @@ ARCHITECTURE.md invariant #2: classification must be deterministic given the
 same inputs. Pure function, zero I/O, fully unit-testable in isolation.
 """
 
+import re
 from typing import Dict, List
 
 NOVEL_PROCESS_MARKERS = [
@@ -24,32 +25,44 @@ AAHAR_MARKERS = [
 ]
 
 
+def _contains_marker(marker: str, text: str) -> bool:
+    if not marker or not text:
+        return False
+    lead = r"\b" if marker[0].isalnum() else r"(?:^|\s)"
+    trail = r"\b" if marker[-1].isalnum() else r"(?:$|\s)"
+    pattern = lead + re.escape(marker) + trail
+    return bool(re.search(pattern, text, re.IGNORECASE))
+
+
+def _has_any_marker(blob: str, markers: List[str]) -> bool:
+    return any(_contains_marker(m, blob) for m in markers)
+
+
 def _text_blob(formulation: Dict) -> str:
     parts = [
-        formulation.get("extraction_method", ""),
-        formulation.get("intended_use", ""),
-        formulation.get("claims_text", ""),
+        str(formulation.get("extraction_method") or ""),
+        str(formulation.get("intended_use") or ""),
+        str(formulation.get("claims_text") or ""),
     ]
     return " ".join(parts).lower()
 
 
 def _matches_classical(formulation: Dict, classical_texts: List[Dict]) -> Dict:
     """Returns the matching classical-text entry, or None."""
-    ingredients = [i.lower() for i in formulation.get("ingredients", [])]
+    raw_ingredients = formulation.get("ingredients") or []
+    ingredients = [str(i).lower().strip() for i in raw_ingredients if i]
     blob = _text_blob(formulation)
 
     # A formulation is only "Classical" if its core ingredients match a known
     # classical text AND the processing/claims described are traditional — no
     # novel-processing, standardized-fraction, or food/supplement framing.
-    # A classical ingredient run through a standardized extraction process is
-    # Phytopharmaceutical, not Classical; framed as a snack or supplement, it's
-    # Aahar, not Classical. Ingredient overlap alone isn't enough.
-    if any(marker in blob for marker in NOVEL_PROCESS_MARKERS + PHYTOPHARMA_MARKERS + AAHAR_MARKERS):
+    if _has_any_marker(blob, NOVEL_PROCESS_MARKERS + PHYTOPHARMA_MARKERS + AAHAR_MARKERS):
         return None
 
+    ingredients_str = " ".join(ingredients)
     for entry in classical_texts:
-        core = [c.lower() for c in entry["core_ingredients"]]
-        if any(c in " ".join(ingredients) for c in core):
+        core = [str(c).lower().strip() for c in entry.get("core_ingredients", []) if c]
+        if any(_contains_marker(c, ingredients_str) for c in core):
             return entry
     return None
 
@@ -74,17 +87,17 @@ def classify(formulation: Dict, classical_texts: List[Dict]) -> Dict:
         trace.append("No novel-processing or standardized-fraction language detected.")
         return {"classification": "Classical", "tkrc_match": classical_match, "trace": trace}
 
-    if any(marker in blob for marker in PHYTOPHARMA_MARKERS):
+    if _has_any_marker(blob, PHYTOPHARMA_MARKERS):
         trace.append("Extraction/claims language matches standardized-fraction criteria.")
         trace.append("Classified per AYUSH Phytopharmaceutical Drugs Notification, 2015 definition.")
         return {"classification": "Phytopharmaceutical", "tkrc_match": None, "trace": trace}
 
-    if any(marker in blob for marker in AAHAR_MARKERS):
+    if _has_any_marker(blob, AAHAR_MARKERS):
         trace.append("Intended use / claims frame this as food, supplement, or nutraceutical.")
         trace.append("Routed to FSSAI-governed classification (Aahar), not drug pathway.")
         return {"classification": "Aahar", "tkrc_match": None, "trace": trace}
 
-    if any(marker in blob for marker in NOVEL_PROCESS_MARKERS):
+    if _has_any_marker(blob, NOVEL_PROCESS_MARKERS):
         trace.append("Novel-processing language detected — not matched to a classical formulation.")
         trace.append("Routed to Patent & Proprietary pathway for novelty assessment.")
         return {"classification": "Patent&Proprietary", "tkrc_match": None, "trace": trace}

@@ -64,21 +64,20 @@ def retrieve(
     scored = []
 
     for raw in corpus:
-        if classification not in raw["applies_to"]:
+        if classification not in raw.get("applies_to", []):
             continue
-        chunk_tokens = _tokenize(raw["text"])
+        chunk_tokens = _tokenize(raw.get("text", ""))
         k_score = _keyword_score(query_tokens, chunk_tokens)
         v_score = _vector_score(query_tokens, chunk_tokens)
-        hybrid = 0.5 * k_score + 0.5 * v_score
-        if hybrid <= 0:
-            continue
+        # Ensure that legally scoped statutory framework chunks retain baseline eligibility
+        hybrid = max(0.5 * k_score + 0.5 * v_score, 0.05)
         scored.append(
             StatutoryChunk(
-                chunk_id=raw["chunk_id"],
-                act=raw["act"],
-                section=raw["section"],
-                text=raw["text"],
-                applies_to=raw["applies_to"],
+                chunk_id=raw.get("chunk_id", ""),
+                act=raw.get("act", ""),
+                section=raw.get("section", ""),
+                text=raw.get("text", ""),
+                applies_to=raw.get("applies_to", []),
                 relevance_score=round(hybrid, 4),
             )
         )
