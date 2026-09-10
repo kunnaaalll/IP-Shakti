@@ -18,19 +18,24 @@ def verify(
     steps: List[RoadmapStep], retrieved_chunks: List[StatutoryChunk]
 ) -> Tuple[bool, List[str]]:
     """Returns (passed, failed_claims). A step fails if any of its citations
-    don't match a retrieved chunk's (act, section, chunk_id), OR if its
+    don't match a retrieved chunk's exact (act, section, chunk_id) triple, OR if its
     action/rationale text contains a legal-assertion marker with zero
     citations attached at all.
     """
-    retrieved_ids = {c.chunk_id for c in retrieved_chunks}
-    retrieved_tuples = {(c.act, c.section) for c in retrieved_chunks}
+    retrieved_triples = {
+        (c.act.strip().lower(), c.section.strip().lower(), c.chunk_id.strip())
+        for c in retrieved_chunks
+    }
     failed = []
 
     for step in steps:
         for citation in step.citations:
-            tuple_match = (citation.act, citation.section) in retrieved_tuples
-            id_match = citation.chunk_id in retrieved_ids
-            if not (tuple_match and id_match):
+            cit_triple = (
+                citation.act.strip().lower(),
+                citation.section.strip().lower(),
+                citation.chunk_id.strip(),
+            )
+            if cit_triple not in retrieved_triples:
                 failed.append(
                     f"Step {step.step}: cited {citation.act} {citation.section} "
                     f"(chunk_id={citation.chunk_id}) — not present in the retrieved chunk set."
@@ -51,12 +56,9 @@ def citation_pass_rate(steps: List[RoadmapStep], failed_claims: List[str]) -> fl
         return 0.0
     failed_step_numbers = set()
     for f in failed_claims:
-        # crude parse of "Step N:" prefix — fine for a prototype's own output format
-        try:
-            n = int(f.split("Step ")[1].split(":")[0])
-            failed_step_numbers.add(n)
-        except (IndexError, ValueError):
-            continue
+        m = re.match(r"^Step\s+(\d+):", f)
+        if m:
+            failed_step_numbers.add(int(m.group(1)))
     passed = len(steps) - len(failed_step_numbers)
     return max(passed, 0) / len(steps)
 

@@ -6,35 +6,44 @@
   <title>IP-SAKTI — Ayurveda IP Navigator</title>
   <meta name="description" content="Citation-verified IP strategy roadmaps for Ayurveda formulations. Built for SIH26045." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #07080f;
-      --bg2:       #0d0f1a;
-      --bg3:       #131628;
-      --border:    rgba(255,255,255,0.07);
-      --border2:   rgba(255,255,255,0.12);
-      --accent:    #00d9a3;
-      --accent2:   #00b386;
+      --bg:        #06080e;
+      --bg2:       #0d101d;
+      --bg3:       #14182b;
+      --border:    rgba(255,255,255,0.08);
+      --border2:   rgba(255,255,255,0.15);
+      --accent:    #00e5a3;
+      --accent2:   #00b882;
       --amber:     #f59e0b;
       --red:       #ef4444;
       --blue:      #6366f1;
-      --text:      #e8eaf0;
-      --muted:     #8891a8;
-      --radius:    12px;
+      --cyan:      #06b6d4;
+      --text:      #f1f5f9;
+      --muted:     #8e9bb5;
+      --radius:    14px;
       --radius-sm: 8px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: radial-gradient(circle at 12% 0%, rgba(0, 229, 163, 0.05) 0%, transparent 45%),
+                  radial-gradient(circle at 88% 18%, rgba(99, 102, 241, 0.05) 0%, transparent 45%),
+                  var(--bg);
       color: var(--text);
       min-height: 100vh;
       overflow-x: hidden;
+    }
+
+    h1, h2, h3, .logo-text, .panel-title, .section-title, .pipeline-title, .phase-title, .gi-title, .modal-title, .step-action {
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.01em;
     }
 
     /* ── Noise texture overlay ── */
@@ -348,6 +357,171 @@
       font-size: 12px; color: var(--accent);
     }
 
+    /* ── Gatekeeper Intercept & Self-Healing Cards ── */
+    .gatekeeper-intercept-box {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.45);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      animation: slide-up 0.3s ease-out;
+      border-left: 3px solid #ef4444;
+    }
+    .intercept-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .intercept-badge {
+      background: rgba(239, 68, 68, 0.2);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      font-family: var(--font-mono);
+    }
+    .intercept-time {
+      font-size: 11px;
+      color: #cbd5e1;
+      font-weight: 600;
+    }
+    .intercept-intro {
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .intercept-action-note {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #f59e0b;
+      margin-top: 8px;
+      padding-top: 6px;
+      border-top: 1px dashed rgba(245, 158, 11, 0.3);
+    }
+    .intercept-retry-running {
+      padding: 8px 12px;
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      color: #fbbf24;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .gatekeeper-heal-box {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      margin-top: 8px;
+      animation: slide-up 0.3s ease-out;
+      border-left: 3px solid #10b981;
+    }
+    .heal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .heal-badge {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      font-family: var(--font-mono);
+    }
+    .heal-status {
+      font-size: 11px;
+      color: #34d399;
+      font-weight: 600;
+    }
+    .heal-desc {
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+    /* ── Roadmap Hallucination Intercept Banner ── */
+    .healed-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(15, 23, 42, 0.6));
+      border: 1.5px solid rgba(16, 185, 129, 0.5);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      box-shadow: 0 4px 18px rgba(16, 185, 129, 0.12);
+      animation: slide-up 0.4s ease-out;
+    }
+    .healed-banner-left {
+      font-size: 26px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .healed-banner-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .healed-banner-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .healed-pill-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+    }
+    .healed-badge-small {
+      font-size: 11px;
+      font-weight: 600;
+      color: #a7f3d0;
+      font-family: var(--font-mono);
+    }
+    .healed-banner-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #f1f5f9;
+      line-height: 1.3;
+    }
+    .healed-banner-desc {
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+    .healed-banner-desc code {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1px 5px;
+      border-radius: 3px;
+      color: #fca5a5;
+      font-family: var(--font-mono);
+    }
+
     /* ── Confidence meter ── */
     .confidence-block {
       margin-top: 8px;
@@ -506,10 +680,1174 @@
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .main {
+        grid-template-columns: 1fr;
+      }
+      .left-panel {
+        position: static;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    /* ── Language Switcher ── */
+    .lang-switch {
+      display: flex;
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: 20px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: #07080f;
+    }
+
+    /* ── Radar / Scorecard ── */
+    .scorecard-card {
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 20px;
+      align-items: center;
+      animation: slide-up 0.4s ease-out;
+    }
+
+    @media (max-width: 768px) {
+      .scorecard-card { grid-template-columns: 1fr; }
+    }
+
+    .radar-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .radar-svg {
+      overflow: visible;
+    }
+
+    .meter-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .meter-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meter-head {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+
+    .meter-title { color: var(--text); font-weight: 500; }
+    .meter-val { font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+
+    .meter-track {
+      height: 6px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .meter-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ── NBA Action Button ── */
+    .btn-nba {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(0,217,163,0.15), rgba(99,102,241,0.15));
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      margin-top: 14px;
+      transition: all 0.2s;
+    }
+
+    .btn-nba:hover {
+      background: var(--accent);
+      color: #07080f;
+      box-shadow: 0 0 16px rgba(0,217,163,0.3);
+      transform: translateY(-1px);
+    }
+
+    /* ── NBA Modal ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #ffffff;
+      color: #1a1a1a;
+      width: 100%;
+      max-width: 820px;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: modal-pop 0.3s ease-out;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    @keyframes modal-pop {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-header-bar {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .modal-header-bar h3 {
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 20px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-close-btn:hover { color: #ffffff; }
+
+    .modal-scroll-body {
+      padding: 36px 48px;
+      overflow-y: auto;
+      flex: 1;
+      line-height: 1.6;
+    }
+
+    .govt-header {
+      text-align: center;
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+
+    .govt-emblem { font-size: 28px; margin-bottom: 4px; }
+    .govt-title { font-size: 15px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
+    .form-num { font-size: 18px; font-weight: bold; margin: 8px 0; }
+    .form-rule { font-size: 12px; font-style: italic; }
+    .form-desc { font-size: 13px; font-weight: bold; margin-top: 6px; }
+
+    .form-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 13px;
+    }
+
+    .form-table td {
+      padding: 8px 10px;
+      vertical-align: top;
+      border: 1px solid #cbd5e1;
+    }
+
+    .form-table td.col-num { width: 35px; font-weight: bold; }
+    .form-table td.col-label { width: 240px; font-weight: 600; background: #f8fafc; }
+    .form-table td.col-val { background: #ffffff; }
+    .form-field-highlight { background: #eff6ff; font-weight: 500; }
+
+    .modal-footer-bar {
+      background: #f1f5f9;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      border-top: 1px solid #e2e8f0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-print {
+      background: #0f172a;
+      color: #ffffff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-print:hover { background: #1e293b; }
+
+    .btn-close-modal {
+      background: #e2e8f0;
+      color: #334155;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    /* Print styling */
+    @media print {
+      body * { visibility: hidden; }
+      .modal-box, .modal-box * { visibility: visible; }
+      .modal-box {
+        position: absolute;
+        left: 0; top: 0;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-shadow: none !important;
+      }
+      .modal-header-bar, .modal-footer-bar { display: none !important; }
+      .modal-scroll-body { padding: 0 !important; }
+    }
+
+    /* ── Scenario Variant Intelligence Pill ── */
+    .scenario-intel-box {
+      margin-top: 10px;
+      margin-bottom: 6px;
+    }
+    .scenario-intel-pill {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 11px 13px;
+      border-radius: 8px;
+      font-size: 11px;
+      line-height: 1.45;
+      transition: all 0.2s ease;
+    }
+    .scenario-intel-pill.bar-red {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #fca5a5;
+    }
+    .scenario-intel-pill.bar-amber {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #fcd34d;
+    }
+    .scenario-intel-pill.bar-green {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #6ee7b7;
+    }
+    .scenario-intel-pill.bar-blue {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #7dd3fc;
+    }
+    .scenario-intel-pill.bar-purple {
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      color: #d8b4fe;
+    }
+    .btn-nba-chip {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 3px 9px;
+      border-radius: 5px;
+      font-size: 10.5px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+    .btn-nba-chip:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.35);
+      color: var(--accent);
+    }
+
+    /* ── Feature 4: Interactive GI Regional Map of India ── */
+    .gi-map-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+    .gi-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .gi-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .gi-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .gi-subtitle {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .gi-badge {
+      font-size: 10px;
+      background: rgba(139, 92, 246, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      letter-spacing: 0.4px;
+    }
+    .gi-callout-notice {
+      background: rgba(139, 92, 246, 0.08);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 11px;
+      color: #ddd6fe;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+    .gi-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .gi-layout { grid-template-columns: 1fr; }
+    }
+    .gi-map-svg-wrap {
+      background: rgba(10, 14, 26, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .gi-pin {
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .gi-pin:hover circle.pin-dot {
+      fill: #ffffff !important;
+      filter: drop-shadow(0 0 6px var(--accent));
+    }
+    .gi-pin:hover text {
+      fill: #ffffff !important;
+      font-weight: 700;
+    }
+    .gi-pin.active circle.pin-dot {
+      fill: #00d9a3 !important;
+      stroke: #ffffff;
+      stroke-width: 2.5;
+    }
+    .gi-pin.active circle.pin-pulse {
+      animation: giPulse 1.8s infinite;
+      stroke: #00d9a3 !important;
+    }
+    @keyframes giPulse {
+      0% { r: 6; opacity: 0.9; stroke-width: 2; }
+      100% { r: 20; opacity: 0; stroke-width: 0.5; }
+    }
+    .gi-info-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .gi-info-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .gi-hub-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+    .gi-hub-state {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+    .gi-tag-reg {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .gi-items-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .gi-item-pill {
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4px 9px;
+      border-radius: 6px;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .gi-details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      font-size: 11px;
+    }
+    @media (max-width: 600px) {
+      .gi-details-grid { grid-template-columns: 1fr; }
+    }
+    .gi-detail-box {
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .gi-detail-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+      margin-bottom: 4px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .gi-detail-val {
+      font-size: 11px;
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+    .gi-selector-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .gi-pill-btn {
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: #94a3b8;
+      padding: 4px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .gi-pill-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+    .gi-pill-btn.active {
+      background: rgba(0, 217, 163, 0.18);
+      border-color: rgba(0, 217, 163, 0.5);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ── Analytical Roadmap Components ── */
+    .roadmap-posture-banner {
+      background: linear-gradient(135deg, rgba(13, 15, 26, 0.95), rgba(19, 22, 40, 0.95));
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      animation: slide-up 0.4s ease-out;
+    }
+
+    .posture-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .posture-label {
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .posture-val {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .posture-val.alert-red { color: #f87171; }
+    .posture-val.alert-amber { color: #fbbf24; }
+    .posture-val.alert-green { color: #34d399; }
+    .posture-val.alert-blue { color: #818cf8; }
+
+    /* Visual Phase Milestone Stepper */
+    .phase-tracker {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 6px 2px;
+    }
+
+    @media (max-width: 768px) {
+      .phase-tracker { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .phase-step-node {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .phase-step-node.phase-active {
+      border-color: rgba(0, 217, 163, 0.4);
+      background: rgba(0, 217, 163, 0.05);
+      box-shadow: 0 0 12px rgba(0, 217, 163, 0.1);
+    }
+
+    .phase-node-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .phase-number {
+      font-size: 9.5px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      background: rgba(0, 217, 163, 0.12);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .phase-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .phase-sub {
+      font-size: 9.5px;
+      color: var(--muted);
+    }
+
+    /* Analytical Step Card Enhancements */
+    .step-phase-tag {
+      font-size: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      background: rgba(0, 217, 163, 0.08);
+      border: 1px solid rgba(0, 217, 163, 0.2);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .step-card-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 8px;
+      margin: 10px 0;
+      padding: 9px 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-sm);
+    }
+
+    .meta-box {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .meta-label {
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .meta-val {
+      font-size: 11.5px;
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+
+    .step-hazard-box {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: var(--radius-sm);
+      padding: 9px 12px;
+      margin: 8px 0;
+      font-size: 11.5px;
+      color: #fca5a5;
+      line-height: 1.45;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .step-hazard-box strong {
+      color: #f87171;
+    }
+
+    .step-guidance-box {
+      background: rgba(0, 217, 163, 0.06);
+      border: 1px solid rgba(0, 217, 163, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 9px 12px;
+      margin: 8px 0;
+      font-size: 11.5px;
+      color: #6ee7b7;
+      line-height: 1.45;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .step-guidance-box strong {
+      color: var(--accent);
+    }
+
+    /* ── GI Strategic Comparison Table ── */
+    .gi-decision-matrix-card {
+      background: rgba(13, 17, 30, 0.95);
+      border: 1px solid var(--border2);
+      border-radius: 10px;
+      padding: 14px;
+      margin: 14px 0;
+      overflow-x: auto;
+    }
+
+    .gi-matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+      line-height: 1.45;
+    }
+
+    .gi-matrix-table th {
+      text-align: left;
+      padding: 8px 10px;
+      font-weight: 700;
+      color: #94a3b8;
+      border-bottom: 1px solid var(--border2);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .gi-matrix-table td {
+      padding: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      vertical-align: top;
+    }
+
+    .gi-matrix-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .gi-matrix-dimension {
+      font-weight: 600;
+      color: #f1f5f9;
+      width: 28%;
+    }
+
+    .gi-matrix-patent {
+      color: #fca5a5;
+      background: rgba(239, 68, 68, 0.04);
+      width: 36%;
+    }
+
+    .gi-matrix-gi {
+      color: #6ee7b7;
+      background: rgba(16, 185, 129, 0.05);
+      width: 36%;
+      font-weight: 500;
+    }
+
+    /* GI Deep Dossier Grid */
+    .gi-dossier-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .gi-dossier-cell {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      padding: 8px 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .gi-dossier-cell-lbl {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .gi-dossier-cell-val {
+      font-size: 11.5px;
+      color: #e2e8f0;
+      line-height: 1.4;
+    }
+
+    .gi-multiplier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10.5px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(16, 185, 129, 0.18);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
     /* ── Scrollbar ── */
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+    /* ── Live Gatekeeper Status Beacon ── */
+    .engine-beacon {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(0, 229, 163, 0.08);
+      border: 1px solid rgba(0, 229, 163, 0.28);
+      border-radius: 20px;
+      padding: 4px 11px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      user-select: none;
+    }
+    .beacon-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 0 rgba(0, 229, 163, 0.7);
+      animation: beacon-glow 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    }
+    @keyframes beacon-glow {
+      0%   { box-shadow: 0 0 0 0 rgba(0, 229, 163, 0.7); }
+      70%  { box-shadow: 0 0 0 7px rgba(0, 229, 163, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 229, 163, 0); }
+    }
+
+    /* ── Quick Botanical Suggestion Chips ── */
+    .botanical-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 5px;
+      margin-top: 8px;
+      padding: 8px 10px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px dashed rgba(255, 255, 255, 0.09);
+      border-radius: var(--radius-sm);
+    }
+    .botanical-chip-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      margin-right: 2px;
+    }
+    .botanical-chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 12px;
+      color: #cbd5e1;
+      font-size: 11px;
+      font-family: inherit;
+      font-weight: 500;
+      padding: 3px 8px;
+      cursor: pointer;
+      transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+    }
+    .botanical-chip:hover {
+      background: rgba(0, 229, 163, 0.14);
+      border-color: rgba(0, 229, 163, 0.4);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .botanical-chip:active {
+      transform: scale(0.95);
+    }
+
+    /* ── Roadmap Filter Dock & Toolbar ── */
+    .roadmap-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      animation: slide-up 0.3s ease-out;
+    }
+    .roadmap-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .filter-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      font-family: inherit;
+      padding: 5px 9px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .filter-pill:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .filter-pill.active {
+      background: rgba(0, 229, 163, 0.14);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .filter-pill-risk.active {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+    .filter-count {
+      font-size: 9.5px;
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 1px 5px;
+      border-radius: 10px;
+      line-height: 1.2;
+    }
+    .filter-pill.active .filter-count {
+      background: rgba(0, 229, 163, 0.25);
+      color: var(--accent);
+    }
+    .filter-pill-risk.active .filter-count {
+      background: rgba(245, 158, 11, 0.3);
+      color: var(--amber);
+    }
+    .roadmap-quick-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto;
+    }
+    .btn-tool-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border2);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 600;
+      font-family: inherit;
+      padding: 5px 11px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .btn-tool-pill:hover {
+      background: rgba(0, 229, 163, 0.12);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .btn-tool-pill:active {
+      transform: scale(0.96);
+    }
+
+    /* ── Step Deliverable Copy Button & Step Card Hover ── */
+    .btn-copy-deliv {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 4px;
+      color: var(--muted);
+      font-size: 10px;
+      font-family: inherit;
+      padding: 2px 7px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .btn-copy-deliv:hover {
+      background: rgba(0, 229, 163, 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .btn-copy-deliv:active {
+      transform: scale(0.93);
+    }
+
+    .step-card {
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, opacity 0.2s ease;
+    }
+    .step-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.12);
+    }
+
+    /* ── Interactive Radar Enhancements ── */
+    .radar-container {
+      position: relative;
+    }
+    .radar-vertex-dot {
+      cursor: pointer;
+      transition: r 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), fill 0.2s ease;
+    }
+    .radar-vertex-dot:hover {
+      r: 6.5px;
+      fill: #ffffff;
+      filter: drop-shadow(0 0 8px var(--accent));
+    }
+    .meter-row {
+      transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+      border-radius: 6px;
+      padding: 5px 8px;
+    }
+    .meter-row.meter-highlight {
+      background: rgba(0, 229, 163, 0.1);
+      box-shadow: 0 0 0 1px rgba(0, 229, 163, 0.35);
+      transform: translateX(4px);
+    }
+    .radar-tooltip {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(13, 16, 29, 0.95);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text);
+      pointer-events: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 20;
+    }
+    .radar-tooltip.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-2px);
+    }
+
+    /* ── Interactive GI Hub Flash ── */
+    .gi-info-card, .gi-card {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .gi-info-card.gi-card-active, .gi-card.gi-card-active {
+      border-color: var(--accent) !important;
+      box-shadow: 0 0 24px rgba(0, 229, 163, 0.25), inset 0 0 14px rgba(0, 229, 163, 0.06);
+      transform: translateY(-2px);
+    }
+
+    /* ── Toast Notification System ── */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 10000;
+      pointer-events: none;
+    }
+    .toast-item {
+      min-width: 250px;
+      max-width: 380px;
+      background: rgba(13, 16, 29, 0.94);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border2);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-sm);
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.7);
+      color: var(--text);
+      font-size: 12.5px;
+      pointer-events: auto;
+      animation: toast-slide-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .toast-item.toast-out {
+      opacity: 0;
+      transform: translateY(10px) scale(0.95);
+    }
+    .toast-item.toast-success { border-left-color: var(--accent); }
+    .toast-item.toast-info    { border-left-color: var(--blue); }
+    .toast-item.toast-warning { border-left-color: var(--amber); }
+    .toast-item.toast-error   { border-left-color: var(--red); }
+    .toast-icon { font-size: 16px; flex-shrink: 0; }
+    .toast-text { flex: 1; line-height: 1.4; font-weight: 500; }
+    @keyframes toast-slide-in {
+      from { opacity: 0; transform: translateY(16px) scale(0.96); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ── Accessibility: Reduced Motion ──────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      .beacon-pulse { animation: none !important; }
+      .step-card { animation: none !important; transition: none !important; }
+      .toast-item { animation: none !important; }
+      .stage-tab, .scenario-btn, .filter-pill, .botanical-chip,
+      .btn-tool-pill, .radar-vertex-dot, .meter-row, .gi-info-card {
+        transition: none !important;
+      }
+      .gi-info-card.gi-card-active { animation: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -517,9 +1855,22 @@
 <header>
   <div class="logo">
     <div class="logo-icon">⚖️</div>
-    <div class="logo-text">IP-<span>SAKTI</span></div>
+    <div>
+      <div class="logo-text">IP-<span>SAKTI</span></div>
+      <div style="font-size:10px;color:var(--muted);letter-spacing:0.4px">Ayurveda IP Sovereignty Navigator</div>
+    </div>
   </div>
-  <span class="badge">SIH26045 · Proof of Concept</span>
+  <div style="display:flex;align-items:center;gap:14px">
+    <div class="engine-beacon" title="Stage 4 Citation Verifier & Hallucination Gatekeeper is armed and operational">
+      <span class="beacon-pulse"></span>
+      <span data-i18n="beacon_status">GATEKEEPER ACTIVE</span>
+    </div>
+    <div class="lang-switch">
+      <button class="lang-btn active" id="lang-en" onclick="setLanguage('en')">English</button>
+      <button class="lang-btn" id="lang-hi" onclick="setLanguage('hi')">हिन्दी</button>
+    </div>
+    <span class="badge" data-i18n="badge_sih">SIH26045 · Proof of Concept</span>
+  </div>
 </header>
 
 <div class="main">
@@ -527,52 +1878,86 @@
   <!-- ── Left Panel ── -->
   <aside class="left-panel">
     <div>
-      <p class="panel-title" style="margin-bottom:12px">Quick Scenarios</p>
+      <p class="panel-title" style="margin-bottom:12px" data-i18n="quick_scenarios">Quick Scenarios</p>
       <div class="scenarios-grid">
-        <button class="scenario-btn" data-key="classical">🌿 Classical</button>
-        <button class="scenario-btn" data-key="phytopharma">🧪 Phytopharma</button>
-        <button class="scenario-btn" data-key="aahar">🥗 Aahar</button>
-        <button class="scenario-btn" data-key="patent_proprietary">🔬 Patent &amp; Prop.</button>
-        <button class="scenario-btn" data-key="ambiguous">❓ Ambiguous</button>
-        <button class="scenario-btn bad-cite-btn" data-key="bad-citation">⚡ Demo: Hallucination Catch</button>
+        <button class="scenario-btn" data-key="classical" data-i18n="btn_classical">🌿 Classical</button>
+        <button class="scenario-btn" data-key="phytopharma" data-i18n="btn_phytopharma">🧪 Phytopharma</button>
+        <button class="scenario-btn" data-key="aahar" data-i18n="btn_aahar">🥗 Aahar</button>
+        <button class="scenario-btn" data-key="patent_proprietary" data-i18n="btn_patent_prop">🔬 Patent &amp; Prop.</button>
+        <button class="scenario-btn" data-key="ambiguous" data-i18n="btn_ambiguous">❓ Ambiguous</button>
+        <button class="scenario-btn bad-cite-btn" data-key="bad-citation" data-i18n="btn_bad_citation">⚡ Demo: Hallucination Catch</button>
       </div>
     </div>
 
     <div style="height:1px;background:var(--border)"></div>
 
+    <!-- Live Scenario Variant Intelligence Pill -->
+    <div class="scenario-intel-box" id="scenario-intel-box" style="display:none">
+      <div id="scenario-intel-pill" class="scenario-intel-pill bar-red">
+        <span id="scenario-intel-icon" style="font-size:16px">🚫</span>
+        <div style="flex:1">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span id="scenario-intel-title" style="font-weight:700;font-size:11.5px">Classical Prior Art</span>
+            <span id="scenario-intel-badge" class="badge" style="font-size:9px;padding:1px 6px">Barred § 3p</span>
+          </div>
+          <div id="scenario-intel-desc" style="font-size:10.5px;opacity:0.9;margin-top:2px;line-height:1.4">
+            100% Traditional Knowledge. Cannot be patented. Monopolize via GI Act 1999 &amp; Trademark.
+          </div>
+          <div id="scenario-intel-actions" style="display:none">
+            <button type="button" class="btn-nba-chip" onclick="openNbaModal()">
+              <span>🏛️</span> <span data-i18n="btn_quick_nba">Instant NBA Form 3 Draft →</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <form id="formulation-form" autocomplete="off">
       <div style="display:flex;flex-direction:column;gap:14px">
 
         <div class="form-group">
-          <label for="ingredients">Ingredients</label>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <label for="ingredients" data-i18n="label_ingredients">Ingredients</label>
+            <span class="hint" data-i18n="hint_ingredients" style="margin-top:0">Comma-separated</span>
+          </div>
           <input id="ingredients" name="ingredients" type="text" placeholder="ashwagandha, milk" />
-          <span class="hint">Comma-separated</span>
+          
+          <!-- Quick Botanical Suggestion Chips -->
+          <div class="botanical-chip-row" id="botanical-chips">
+            <span class="botanical-chip-label" data-i18n="lbl_quick_add">Quick Add:</span>
+            <button type="button" class="botanical-chip" onclick="addBotanical('Ashwagandha')">+ Ashwagandha</button>
+            <button type="button" class="botanical-chip" onclick="addBotanical('Curcumin 95%')">+ Curcumin 95%</button>
+            <button type="button" class="botanical-chip" onclick="addBotanical('Piperine')">+ Piperine</button>
+            <button type="button" class="botanical-chip" onclick="addBotanical('Brahmi')">+ Brahmi</button>
+            <button type="button" class="botanical-chip" onclick="addBotanical('Giloy')">+ Giloy</button>
+            <button type="button" class="botanical-chip" onclick="addBotanical('Guggulu')">+ Guggulu</button>
+          </div>
         </div>
 
         <div class="form-group">
-          <label for="extraction_method">Extraction / Process</label>
+          <label for="extraction_method" data-i18n="label_extraction">Extraction / Process</label>
           <input id="extraction_method" name="extraction_method" type="text" placeholder="traditional decoction, sun-dried powder" />
         </div>
 
         <div class="form-group">
-          <label for="intended_use">Intended Use</label>
+          <label for="intended_use" data-i18n="label_intended_use">Intended Use</label>
           <input id="intended_use" name="intended_use" type="text" placeholder="general wellness and stress support" />
         </div>
 
         <div class="form-group">
-          <label for="claims_text">Claims Text</label>
+          <label for="claims_text" data-i18n="label_claims">Claims Text</label>
           <textarea id="claims_text" name="claims_text" placeholder="Rejuvenating tonic prepared following traditional method."></textarea>
         </div>
 
         <div class="form-group">
-          <label for="jurisdiction">Jurisdiction</label>
+          <label for="jurisdiction" data-i18n="label_jurisdiction">Jurisdiction</label>
           <select id="jurisdiction" name="jurisdiction">
-            <option value="IN">India (IN)</option>
-            <option value="INTL">India + International</option>
+            <option value="IN" data-i18n="opt_in">India (IN)</option>
+            <option value="INTL" data-i18n="opt_intl">India + International</option>
           </select>
         </div>
 
-        <button type="submit" class="analyze-btn" id="analyze-btn">
+        <button type="submit" class="analyze-btn" id="analyze-btn" data-i18n="btn_analyze">
           Analyze Formulation →
         </button>
 
@@ -585,15 +1970,15 @@
 
     <div class="empty-state" id="empty-state">
       <div class="empty-icon">⚖️</div>
-      <h2>Ready to Analyze</h2>
-      <p>Select a demo scenario or enter a custom formulation to run the citation-verified IP pipeline.</p>
+      <h2 data-i18n="empty_title">Ready to Analyze</h2>
+      <p data-i18n="empty_desc">Select a demo scenario or enter a custom formulation to run the citation-verified IP pipeline.</p>
     </div>
 
     <!-- pipeline stages (hidden until run) -->
     <div id="pipeline-view" style="display:none">
 
       <div class="pipeline-header">
-        <span class="pipeline-title">Pipeline Execution</span>
+        <span class="pipeline-title" data-i18n="pipeline_title">Pipeline Execution</span>
         <span class="classification-badge" id="cls-badge" style="display:none"></span>
       </div>
 
@@ -608,7 +1993,7 @@
           <div class="stage-header" style="cursor:default">
             <div class="confidence-block" style="width:100%">
               <div class="conf-row">
-                <span class="conf-label">Confidence Score</span>
+                <span class="conf-label" data-i18n="conf_label">Confidence Score</span>
                 <span class="conf-value" id="conf-value">—</span>
               </div>
               <div class="conf-bar-track">
@@ -620,17 +2005,326 @@
         </div>
       </div>
 
+      <!-- IP Risk & Readiness Scorecard (Radar) -->
+      <div id="scorecard-block" style="display:none">
+        <div class="scorecard-card">
+          <div class="radar-container">
+            <div id="radar-tooltip" class="radar-tooltip"></div>
+            <svg id="radar-svg" class="radar-svg" width="220" height="220" viewBox="0 0 220 220"></svg>
+            <span style="font-size:11px;color:var(--muted);margin-top:6px" data-i18n="radar_caption">IP Readiness &amp; Risk Posture</span>
+          </div>
+          <div class="meter-list" id="scorecard-meters"></div>
+        </div>
+      </div>
+
       <!-- Escalation banner -->
       <div id="escalation-block" style="display:none"></div>
 
       <!-- Roadmap -->
       <div id="roadmap-block" style="display:none">
-        <div class="section-title">IP Strategy Roadmap</div>
-        <div id="roadmap-steps"></div>
-        <p style="font-size:11px;color:var(--muted);margin-top:12px;line-height:1.6">
+        <div class="section-title" data-i18n="roadmap_title">IP Strategy Roadmap</div>
+        
+        <!-- Hallucination Intercept & Self-Healing Verification Banner -->
+        <div id="roadmap-healed-banner" style="display:none"></div>
+
+        <!-- Strategic Posture Banner -->
+        <div id="roadmap-posture" class="roadmap-posture-banner">
+          <div class="posture-item">
+            <span class="posture-label"><span>⚖️</span> <span data-i18n="lbl_statutory_barrier">Primary Statutory Barrier</span></span>
+            <span class="posture-val" id="posture-barrier">—</span>
+          </div>
+          <div class="posture-item">
+            <span class="posture-label"><span>📊</span> <span data-i18n="lbl_filing_readiness">Filing Readiness Index</span></span>
+            <span class="posture-val" id="posture-readiness">—</span>
+          </div>
+          <div class="posture-item">
+            <span class="posture-label"><span>🛡️</span> <span data-i18n="lbl_core_remedy">Core Legal Remedy</span></span>
+            <span class="posture-val" id="posture-remedy">—</span>
+          </div>
+        </div>
+
+        <!-- 4-Phase Milestone Stepper -->
+        <div id="roadmap-phases" class="phase-tracker">
+          <div class="phase-step-node" id="node-phase-1">
+            <div class="phase-node-header">
+              <span class="phase-number">PHASE 1</span>
+              <span>🔍</span>
+            </div>
+            <div class="phase-title" data-i18n="p1_title">Legal Audit & Prior Art</div>
+            <div class="phase-sub" data-i18n="p1_sub">TKDL & § 3(p) clearance</div>
+          </div>
+          <div class="phase-step-node" id="node-phase-2">
+            <div class="phase-node-header">
+              <span class="phase-number">PHASE 2</span>
+              <span>🧪</span>
+            </div>
+            <div class="phase-title" data-i18n="p2_title">Technical & Clinical</div>
+            <div class="phase-sub" data-i18n="p2_sub">Synergy / IND assays</div>
+          </div>
+          <div class="phase-step-node" id="node-phase-3">
+            <div class="phase-node-header">
+              <span class="phase-number">PHASE 3</span>
+              <span>🏛️</span>
+            </div>
+            <div class="phase-title" data-i18n="p3_title">Statutory Filings</div>
+            <div class="phase-sub" data-i18n="p3_sub">Form 3 NBA & IPO specs</div>
+          </div>
+          <div class="phase-step-node" id="node-phase-4">
+            <div class="phase-node-header">
+              <span class="phase-number">PHASE 4</span>
+              <span>🛡️</span>
+            </div>
+            <div class="phase-title" data-i18n="p4_title">Monopoly & Enforcement</div>
+            <div class="phase-sub" data-i18n="p4_sub">GI / Class 5 / Form 25D</div>
+          </div>
+        </div>
+
+        <!-- Interactive Roadmap Filter Dock & Strategy Toolbar -->
+        <div class="roadmap-toolbar" id="roadmap-toolbar" style="display:none">
+          <div class="roadmap-filters" id="roadmap-filter-pills">
+            <button type="button" class="filter-pill active" data-filter="all" onclick="setRoadmapFilter('all')">
+              <span data-i18n="filter_all">All Steps</span> <span class="filter-count" id="count-all">0</span>
+            </button>
+            <button type="button" class="filter-pill" data-filter="Phase 1" onclick="setRoadmapFilter('Phase 1')">
+              Phase 1 <span class="filter-count" id="count-p1">0</span>
+            </button>
+            <button type="button" class="filter-pill" data-filter="Phase 2" onclick="setRoadmapFilter('Phase 2')">
+              Phase 2 <span class="filter-count" id="count-p2">0</span>
+            </button>
+            <button type="button" class="filter-pill" data-filter="Phase 3" onclick="setRoadmapFilter('Phase 3')">
+              Phase 3 <span class="filter-count" id="count-p3">0</span>
+            </button>
+            <button type="button" class="filter-pill" data-filter="Phase 4" onclick="setRoadmapFilter('Phase 4')">
+              Phase 4 <span class="filter-count" id="count-p4">0</span>
+            </button>
+            <button type="button" class="filter-pill filter-pill-risk" data-filter="risk" onclick="setRoadmapFilter('risk')">
+              <span>⚠️</span> <span data-i18n="filter_risk">High Risk / Blockers</span> <span class="filter-count" id="count-risk">0</span>
+            </button>
+          </div>
+          <div class="roadmap-quick-actions">
+            <button type="button" class="btn-tool-pill" onclick="copyFullStrategy()" title="Copy entire analytical strategy formatted in Markdown">
+              <span>📋</span> <span data-i18n="btn_copy_strategy">Copy Strategy</span>
+            </button>
+            <button type="button" class="btn-tool-pill" onclick="window.print()" title="Print or save as PDF">
+              <span>🖨️</span> <span data-i18n="btn_export_pdf">Export PDF</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Steps list -->
+        <div class="steps-list" id="roadmap-steps"></div>
+        
+        <!-- NBA Form 3 Action Callout -->
+        <div class="nba-action-callout" id="nba-cta-container" style="display:none">
+          <div class="nba-cta-content">
+            <div class="nba-cta-title">🏛️ National Biodiversity Authority (NBA) Statutory Clearance Gateway</div>
+            <div class="nba-cta-desc">Formulation contains protected Indian bio-resources. Under Section 6 of Biological Diversity Act 2002, foreign commercialization or patent grant requires mandatory Form 3 approval.</div>
+          </div>
+          <button type="button" class="btn-nba-cta" onclick="openNbaModal()">
+            <span>📄</span> <span data-i18n="btn_nba_doc">Generate Pre-filled Official NBA Form 3 Draft →</span>
+          </button>
+        </div>
+
+        <p style="font-size:11px;color:var(--muted);margin-top:14px;line-height:1.6" data-i18n="disclaimer_note">
           ℹ️ Informational only — not legal advice. All claims above are verified against retrieved statutory text.
           For formal IP proceedings, consult a registered patent agent.
         </p>
+      </div>
+
+      <!-- Feature 4: Interactive GI (Geographical Indications) Regional Map of India -->
+      <div id="gi-block" style="display:none">
+        <div class="gi-map-card">
+          <div class="gi-header-bar">
+            <div class="gi-title-group">
+              <div class="gi-title">
+                <span>🗺️</span> <span data-i18n="gi_title">AYUSH Geographical Indications (GI) Strategic Registry</span>
+              </div>
+              <div class="gi-subtitle" data-i18n="gi_subtitle">
+                Monopoly alternative under GI Act 1999 for non-patentable Classical formulations &amp; indigenous botanicals
+              </div>
+            </div>
+            <span class="gi-badge" id="gi-header-badge" data-i18n="gi_badge">GI ACT 1999 REPOSITORY</span>
+          </div>
+
+          <div id="gi-callout" class="gi-callout-notice">
+            <strong id="gi-callout-lead" data-i18n="gi_notice_lead">💡 Strategic Legal Alternative:</strong> <span id="gi-callout-text" data-i18n="gi_notice">Classical formulations are barred from standard patenting per Section 3(p). However, the Geographical Indications of Goods Act, 1999 provides legally enforceable territorial monopolies, community trade dress, and 40-70% export price premiums.</span>
+          </div>
+
+          <!-- Strategic Decision Matrix: Patents Act 1970 vs GI Act 1999 -->
+          <div class="gi-decision-matrix-card">
+            <div style="font-size:12px;font-weight:700;color:#f8fafc;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+              <span>⚖️</span> <span data-i18n="gi_matrix_title">Strategic Decision Matrix: Patents Act 1970 vs GI Act 1999</span>
+            </div>
+            <table class="gi-matrix-table">
+              <thead>
+                <tr>
+                  <th data-i18n="gi_th_dim">Legal Dimension</th>
+                  <th data-i18n="gi_th_patent">Patents Act, 1970 (Standard IP)</th>
+                  <th data-i18n="gi_th_gi">GI Act, 1999 (Sui Generis IP)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="gi-matrix-dimension" data-i18n="gi_dim1_title">Classical Formulation Eligibility</td>
+                  <td class="gi-matrix-patent" data-i18n="gi_dim1_pat">❌ Strictly Barred under Section 3(p) as Traditional Knowledge; anticipated by TKDL citations.</td>
+                  <td class="gi-matrix-gi" data-i18n="gi_dim1_gi">✅ Fully Protected under Section 2(e) &amp; Section 21 for registered producers in certified agro-climatic zones.</td>
+                </tr>
+                <tr>
+                  <td class="gi-matrix-dimension" data-i18n="gi_dim2_title">Protection Lifespan &amp; Renewal</td>
+                  <td class="gi-matrix-patent" data-i18n="gi_dim2_pat">⚠️ 20-Year Cap: Inventions enter public domain at year 21 with zero commercial exclusivity remaining.</td>
+                  <td class="gi-matrix-gi" data-i18n="gi_dim2_gi">♾️ Indefinite / Perpetual: Renewable every 10 years indefinitely, creating a permanent generational asset.</td>
+                </tr>
+                <tr>
+                  <td class="gi-matrix-dimension" data-i18n="gi_dim3_title">Global Export Value Realization</td>
+                  <td class="gi-matrix-patent" data-i18n="gi_dim3_pat">📉 Generic Commodity: Exposed to low-cost chemical substitutes and downward price erosion.</td>
+                  <td class="gi-matrix-gi" data-i18n="gi_dim3_gi">📈 +45% to +75% Price Multiplier: Authentic provenance QR/hologram commands premium export valuation.</td>
+                </tr>
+                <tr>
+                  <td class="gi-matrix-dimension" data-i18n="gi_dim4_title">Ownership &amp; Licensing Model</td>
+                  <td class="gi-matrix-patent" data-i18n="gi_dim4_pat">🏢 Single Corporate Entity (Assignee); vulnerable to post-grant oppositions by competitor cartels.</td>
+                  <td class="gi-matrix-gi" data-i18n="gi_dim4_gi">🤝 Collective Community Monopoly: Co-owned by Registered Association + individual authorized user licenses.</td>
+                </tr>
+                <tr>
+                  <td class="gi-matrix-dimension" data-i18n="gi_dim5_title">Infringement Remedy &amp; Enforcement</td>
+                  <td class="gi-matrix-patent" data-i18n="gi_dim5_pat">⚖️ Lengthy Civil Injunctions &amp; high evidentiary burden of proving infringement in court.</td>
+                  <td class="gi-matrix-gi" data-i18n="gi_dim5_gi">🚔 Criminal Penalties (§ 67: 6 months to 3 yrs imprisonment) + Customs border seizure under IP Rules.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="gi-layout">
+            <!-- Left: Interactive Map of India with pins -->
+            <div class="gi-map-svg-wrap">
+              <svg id="india-gi-svg" width="220" height="280" viewBox="0 0 320 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- India Subcontinent Outline -->
+                <path d="M 125,25 L 145,20 L 165,35 L 160,65 L 180,85 L 210,95 L 245,100 L 265,115 L 285,115 L 305,135 L 310,160 L 290,175 L 265,175 L 255,190 L 235,185 L 220,200 L 205,230 L 185,270 L 160,320 L 150,355 L 140,355 L 125,310 L 105,265 L 90,230 L 60,205 L 65,170 L 80,150 L 105,135 L 110,95 L 115,55 Z" fill="#0c1222" stroke="#334155" stroke-width="1.8" stroke-linejoin="round" />
+                
+                <!-- Regional Bio-Reserve Guidelines -->
+                <line x1="60" y1="120" x2="310" y2="120" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 4"/>
+                <line x1="60" y1="200" x2="260" y2="200" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 4"/>
+                <line x1="100" y1="280" x2="200" y2="280" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 4"/>
+
+                <!-- 1. Kashmir Hub Pin -->
+                <g class="gi-pin active" id="pin-kashmir" onclick="selectGiHub('kashmir')" transform="translate(138, 48)">
+                  <circle class="pin-pulse" cx="0" cy="0" r="10" fill="none" stroke="#f59e0b"/>
+                  <circle class="pin-dot" cx="0" cy="0" r="5" fill="#f59e0b"/>
+                  <text x="9" y="3" fill="#cbd5e1" font-size="9" font-family="Inter,sans-serif" font-weight="600">Kashmir Saffron</text>
+                </g>
+
+                <!-- 2. Himalayas Hub Pin -->
+                <g class="gi-pin" id="pin-himalayas" onclick="selectGiHub('himalayas')" transform="translate(155, 95)">
+                  <circle class="pin-pulse" cx="0" cy="0" r="8" fill="none" stroke="#38bdf8"/>
+                  <circle class="pin-dot" cx="0" cy="0" r="5" fill="#38bdf8"/>
+                  <text x="9" y="3" fill="#cbd5e1" font-size="9" font-family="Inter,sans-serif" font-weight="600">Himalayas (Tejpatta)</text>
+                </g>
+
+                <!-- 3. Northeast Hub Pin -->
+                <g class="gi-pin" id="pin-northeast" onclick="selectGiHub('northeast')" transform="translate(255, 140)">
+                  <circle class="pin-pulse" cx="0" cy="0" r="8" fill="none" stroke="#a855f7"/>
+                  <circle class="pin-dot" cx="0" cy="0" r="5" fill="#a855f7"/>
+                  <text x="-8" y="-7" text-anchor="end" fill="#cbd5e1" font-size="9" font-family="Inter,sans-serif" font-weight="600">Assam Botanicals</text>
+                </g>
+
+                <!-- 4. West Hub Pin -->
+                <g class="gi-pin" id="pin-west" onclick="selectGiHub('west')" transform="translate(90, 195)">
+                  <circle class="pin-pulse" cx="0" cy="0" r="8" fill="none" stroke="#ec4899"/>
+                  <circle class="pin-dot" cx="0" cy="0" r="5" fill="#ec4899"/>
+                  <text x="-8" y="3" text-anchor="end" fill="#cbd5e1" font-size="9" font-family="Inter,sans-serif" font-weight="600">Konkan Kokum</text>
+                </g>
+
+                <!-- 5. Karnataka Hub Pin -->
+                <g class="gi-pin" id="pin-karnataka" onclick="selectGiHub('karnataka')" transform="translate(125, 260)">
+                  <circle class="pin-pulse" cx="0" cy="0" r="8" fill="none" stroke="#eab308"/>
+                  <circle class="pin-dot" cx="0" cy="0" r="5" fill="#eab308"/>
+                  <text x="9" y="3" fill="#cbd5e1" font-size="9" font-family="Inter,sans-serif" font-weight="600">Mysore Sandalwood</text>
+                </g>
+
+                <!-- 6. Kerala Western Ghats Hub Pin -->
+                <g class="gi-pin" id="pin-kerala" onclick="selectGiHub('kerala')" transform="translate(135, 325)">
+                  <circle class="pin-pulse" cx="0" cy="0" r="10" fill="none" stroke="#10b981"/>
+                  <circle class="pin-dot" cx="0" cy="0" r="5" fill="#10b981"/>
+                  <text x="9" y="3" fill="#cbd5e1" font-size="9" font-family="Inter,sans-serif" font-weight="600">Kerala Alleppey &amp; Navara</text>
+                </g>
+              </svg>
+              <span style="font-size:10px;color:var(--muted);margin-top:4px" data-i18n="gi_map_hint">Click any regional pin or button below</span>
+            </div>
+
+            <!-- Right: Dynamic Hub Dossier -->
+            <div class="gi-info-card">
+              <div class="gi-info-header">
+                <div>
+                  <div class="gi-hub-title" id="gi-hub-title">Kashmir Valley Botanical Hub</div>
+                  <div class="gi-hub-state" id="gi-hub-state">Jammu &amp; Kashmir (Pampore / Kishtwar)</div>
+                </div>
+                <span class="gi-tag-reg" id="gi-tag-reg">GI Reg. #635 &amp; #636</span>
+              </div>
+
+              <div>
+                <div class="gi-detail-label" data-i18n="gi_col_items">🌿 Certified Bio-Resources &amp; Formulations</div>
+                <div class="gi-items-list" id="gi-items-list">
+                  <span class="gi-item-pill">🌸 Kashmiri Saffron (Crocus sativus)</span>
+                  <span class="gi-item-pill">🌰 Kashmir Walnut</span>
+                  <span class="gi-item-pill">🍄 Kashmiri Guchhi (Wild Morel)</span>
+                </div>
+              </div>
+
+              <div class="gi-details-grid">
+                <div class="gi-detail-box">
+                  <div class="gi-detail-label" data-i18n="gi_col_statute">⚖️ Statutory Protection</div>
+                  <div class="gi-detail-val" id="gi-statute-text">
+                    GI Act 1999 (§ 21 Exclusivity &amp; § 23 Injunction against Infringement / False Indications).
+                  </div>
+                </div>
+                <div class="gi-detail-box">
+                  <div class="gi-detail-label" data-i18n="gi_col_comm">💰 Commercial Advantage</div>
+                  <div class="gi-detail-val" id="gi-commercial-text">
+                    Commands 45-70% global export price premium; mandatory GI QR/hologram seals protect against foreign adulteration.
+                  </div>
+                </div>
+              </div>
+
+              <div class="gi-detail-box" style="margin-top:2px">
+                <div class="gi-detail-label" data-i18n="gi_col_ayush">📜 AYUSH Classical Linkage &amp; ABS Compliance</div>
+                <div class="gi-detail-val" id="gi-ayush-text">
+                  Essential classical ingredient in Kumkumadi Tailam &amp; Chyawanprash. Authentic GI certificate fulfills NBA/SBB Access and Benefit Sharing origin clearance under BD Act 2002.
+                </div>
+              </div>
+
+              <!-- Deep Dossier Grid -->
+              <div class="gi-dossier-grid">
+                <div class="gi-dossier-cell">
+                  <span class="gi-dossier-cell-lbl"><span>🔬</span> <span data-i18n="gi_lbl_marker">Phytochemical Marker (HPLC)</span></span>
+                  <span class="gi-dossier-cell-val" id="gi-marker-text">—</span>
+                </div>
+                <div class="gi-dossier-cell">
+                  <span class="gi-dossier-cell-lbl"><span>📖</span> <span data-i18n="gi_lbl_treatise">Classical Treatise Reference</span></span>
+                  <span class="gi-dossier-cell-val" id="gi-treatise-text">—</span>
+                </div>
+                <div class="gi-dossier-cell">
+                  <span class="gi-dossier-cell-lbl"><span>📈</span> <span data-i18n="gi_lbl_premium">Export Price Multiplier</span></span>
+                  <span class="gi-dossier-cell-val" id="gi-premium-badge">
+                    <span class="gi-multiplier-badge" id="gi-multiplier-text">—</span>
+                  </span>
+                </div>
+                <div class="gi-dossier-cell">
+                  <span class="gi-dossier-cell-lbl"><span>🏛️</span> <span data-i18n="gi_lbl_fpo">Authorized Producer Association</span></span>
+                  <span class="gi-dossier-cell-val" id="gi-fpo-text">—</span>
+                </div>
+              </div>
+
+              <!-- Quick Hub Buttons -->
+              <div class="gi-selector-pills">
+                <button type="button" class="gi-pill-btn active" id="btn-gi-kashmir" onclick="selectGiHub('kashmir')">🌸 Kashmir</button>
+                <button type="button" class="gi-pill-btn" id="btn-gi-himalayas" onclick="selectGiHub('himalayas')">🏔️ Himalayas</button>
+                <button type="button" class="gi-pill-btn" id="btn-gi-northeast" onclick="selectGiHub('northeast')">🍵 Northeast</button>
+                <button type="button" class="gi-pill-btn" id="btn-gi-west" onclick="selectGiHub('west')">🥥 Konkan</button>
+                <button type="button" class="gi-pill-btn" id="btn-gi-karnataka" onclick="selectGiHub('karnataka')">🪵 Mysore</button>
+                <button type="button" class="gi-pill-btn" id="btn-gi-kerala" onclick="selectGiHub('kerala')">🌿 Kerala</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -641,9 +2335,169 @@
 <script>
 const $ = id => document.getElementById(id);
 
+// ── Interactive UI Helpers (Toasts, Clipboard, Filters, Botanicals) ─────────
+let currentRoadmapFilter = 'all';
+
+function showToast(msg, type = 'info', duration = 2500) {
+  const container = $('toast-container');
+  if (!container) return;
+  const icons = {
+    success: '✅',
+    info: '💡',
+    warning: '⚠️',
+    error: '⛔'
+  };
+  const item = document.createElement('div');
+  item.className = `toast-item toast-${type}`;
+  item.innerHTML = `
+    <span class="toast-icon">${icons[type] || 'ℹ️'}</span>
+    <span class="toast-text">${msg}</span>
+  `;
+  container.appendChild(item);
+
+  setTimeout(() => {
+    item.classList.add('toast-out');
+    setTimeout(() => {
+      if (item.parentNode) item.parentNode.removeChild(item);
+    }, 280);
+  }, duration);
+}
+
+function copyToClipboard(text, successMsg) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text)
+      .then(() => showToast(successMsg, 'success'))
+      .catch(() => fallbackCopy(text, successMsg));
+  } else {
+    fallbackCopy(text, successMsg);
+  }
+}
+
+function fallbackCopy(text, successMsg) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try {
+    document.execCommand('copy');
+    showToast(successMsg, 'success');
+  } catch (err) {
+    showToast('Copy failed', 'error');
+  }
+  document.body.removeChild(ta);
+}
+
+function copyText(text, label = 'Deliverable') {
+  if (!text) return;
+  const isHi = currentLang === 'hi';
+  copyToClipboard(text, isHi ? `${label} कॉपी किया गया!` : `${label} copied to clipboard!`);
+}
+
+function addBotanical(name) {
+  const input = $('ingredients');
+  if (!input) return;
+  let val = (input.value || '').trim();
+  if (!val) {
+    input.value = name;
+  } else {
+    const parts = val.split(',').map(s => s.trim().toLowerCase());
+    if (parts.includes(name.toLowerCase())) {
+      showToast(`${name} is already in formulation`, 'info');
+      return;
+    }
+    input.value = val + ', ' + name;
+  }
+  input.dispatchEvent(new Event('input', { bubbles: true }));
+  showToast(`+ Added ${name}`, 'success');
+}
+
+function copyFullStrategy() {
+  if (!lastCompleteData) {
+    showToast(currentLang === 'hi' ? 'कोई सक्रिय रोडमैप डेटा उपलब्ध नहीं है' : 'No active roadmap data to copy', 'warning');
+    return;
+  }
+  const d = lastCompleteData;
+  const isHi = currentLang === 'hi';
+  
+  let md = `# IP-SAKTI Strategic Patent & Legal Dossier\n\n`;
+  md += `**Classification:** ${d.classification}\n`;
+  md += `**Confidence Score:** ${Math.round((d.confidence_score || 0) * 100)}%\n`;
+  md += `**Status:** ${d.status}\n`;
+  if (d.retries_used > 0) {
+    md += `**Citation Verification:** ${d.retries_used} Retries Triggered (Self-Healed Pass 2)\n`;
+  }
+  md += `\n---\n\n## Actionable Implementation Steps\n\n`;
+
+  (d.steps || []).forEach((s, idx) => {
+    md += `### ${idx + 1}. [${s.phase || 'General'}] ${s.action}\n`;
+    md += `- **Risk Level:** ${s.risk_level.toUpperCase()}\n`;
+    if (s.timeline_note) md += `- **Timeline:** ${s.timeline_note}\n`;
+    md += `- **Rationale:** ${s.rationale}\n`;
+    if (s.governing_authority) md += `- **Governing Authority:** ${s.governing_authority}\n`;
+    if (s.deliverable) md += `- **Official Deliverable:** ${s.deliverable}\n`;
+    if (s.statutory_hazard) md += `- **Statutory Hazard:** ${s.statutory_hazard}\n`;
+    if (s.operational_guidance) md += `- **Operational Guidance:** ${s.operational_guidance}\n`;
+    if (s.citations && s.citations.length) {
+      md += `- **Grounding Citations:**\n`;
+      s.citations.forEach(c => {
+        md += `  - Section ${c.section}, ${c.act} (${c.chunk_id})\n`;
+      });
+    }
+    md += `\n`;
+  });
+
+  md += `---\n*Generated by IP-SAKTI — Autonomous Verified IP Pipeline for Ayurveda Formulations (SIH26045)*\n`;
+
+  copyToClipboard(md, isHi ? 'संपूर्ण रणनीति रिपोर्ट क्लिपबोर्ड पर कॉपी हो गई!' : 'Complete IP Strategy Report copied to clipboard!');
+}
+
+function setRoadmapFilter(filter) {
+  currentRoadmapFilter = filter;
+  document.querySelectorAll('#roadmap-filter-pills .filter-pill').forEach(pill => {
+    if (pill.dataset.filter === filter) {
+      pill.classList.add('active');
+    } else {
+      pill.classList.remove('active');
+    }
+  });
+
+  const cards = document.querySelectorAll('#roadmap-steps .step-card');
+  cards.forEach(card => {
+    let show = false;
+    if (filter === 'all') {
+      show = true;
+    } else if (filter === 'risk') {
+      const r = card.dataset.risk;
+      show = (r === 'high' || r === 'blocker');
+    } else {
+      const phaseTag = card.querySelector('.step-phase-tag');
+      if (phaseTag && phaseTag.textContent.toLowerCase().includes(filter.toLowerCase())) {
+        show = true;
+      }
+    }
+
+    if (show) {
+      card.style.display = 'block';
+      card.style.opacity = '1';
+    } else {
+      card.style.display = 'none';
+      card.style.opacity = '0';
+    }
+  });
+}
+
 // ── Load scenarios ──────────────────────────────────────────────────────
 let SCENARIOS = {};
-fetch('/api/scenarios').then(r => r.json()).then(d => { SCENARIOS = d; });
+fetch('/api/scenarios')
+  .then(r => {
+    if (!r.ok) throw new Error('Scenario fetch failed: ' + r.status);
+    return r.json();
+  })
+  .then(d => { SCENARIOS = d; })
+  .catch(err => { console.error('Failed to load scenarios:', err); });
 
 // ── Scenario buttons ────────────────────────────────────────────────────
 document.querySelectorAll('.scenario-btn').forEach(btn => {
@@ -656,12 +2510,11 @@ document.querySelectorAll('.scenario-btn').forEach(btn => {
       // fill with patent_proprietary formulation
       fillForm(SCENARIOS['patent_proprietary']);
       $('analyze-btn').dataset.forceBad = 'true';
-      $('analyze-btn').textContent = '⚡ Run Hallucination Catch Demo →';
     } else {
       fillForm(SCENARIOS[key]);
       delete $('analyze-btn').dataset.forceBad;
-      $('analyze-btn').textContent = 'Analyze Formulation →';
     }
+    updateScenarioIntel(key);
   });
 });
 
@@ -677,6 +2530,13 @@ function fillForm(f) {
 // ── Form submit ─────────────────────────────────────────────────────────
 $('formulation-form').addEventListener('submit', e => {
   e.preventDefault();
+  const ing = ($('ingredients').value || '').trim();
+  const claims = ($('claims_text').value || '').trim();
+  if (!ing && !claims) {
+    alert('Please provide formulation ingredients or claims description.');
+    $('ingredients').focus();
+    return;
+  }
   const forceBad = $('analyze-btn').dataset.forceBad === 'true';
   startAnalysis(forceBad);
 });
@@ -691,16 +2551,28 @@ const STAGE_META = [
 ];
 
 let stageEls = {};
+let stage4Attempts = [];
 
 function resetUI() {
+  stage4Attempts = [];
   $('empty-state').style.display = 'none';
   $('pipeline-view').style.display = 'block';
   $('cls-badge').style.display = 'none';
   $('tkrc-block').style.display = 'none';
   $('confidence-block').style.display = 'none';
+  $('scorecard-block').style.display = 'none';
   $('escalation-block').style.display = 'none';
   $('roadmap-block').style.display = 'none';
+  $('gi-block').style.display = 'none';
+  $('nba-cta-container').style.display = 'none';
   $('roadmap-steps').innerHTML = '';
+  const healedBanner = $('roadmap-healed-banner');
+  if (healedBanner) {
+    healedBanner.style.display = 'none';
+    healedBanner.innerHTML = '';
+  }
+  const errBox = $('pipeline-err-box');
+  if (errBox) errBox.remove();
   stageEls = {};
 
   const list = $('stages-list');
@@ -723,6 +2595,18 @@ function resetUI() {
   });
 }
 
+function showPipelineError(msg) {
+  let errBox = $('pipeline-err-box');
+  if (!errBox) {
+    errBox = document.createElement('div');
+    errBox.id = 'pipeline-err-box';
+    errBox.style.cssText = 'margin-top:16px;padding:12px 16px;border:1px solid rgba(239,68,68,0.35);background:rgba(239,68,68,0.1);border-radius:8px;font-size:13px;color:#f87171;line-height:1.5;';
+    $('stages-list').appendChild(errBox);
+  }
+  errBox.innerHTML = `<strong>⚠️ System Notice:</strong> ${msg}`;
+  errBox.style.display = 'block';
+}
+
 function toggleBody(id) {
   const body = $(`stage-body-${id}`);
   body.classList.toggle('open');
@@ -735,7 +2619,21 @@ function setStageRunning(id, label) {
     STAGE_META.find(m => m.id === id)?.icon + ' ' + label;
   $(`stage-icon-${id}`).innerHTML = '<span class="spinner"></span>';
   const body = $(`stage-body-${id}`);
-  body.innerHTML = '';
+
+  // When Stage 4 is retrying (Attempt 2), do not wipe out the Attempt 1 intercept card!
+  if (id === 4 && stage4Attempts.length > 0) {
+    let retryEl = $('stage4-retry-running');
+    if (!retryEl) {
+      retryEl = document.createElement('div');
+      retryEl.id = 'stage4-retry-running';
+      retryEl.className = 'intercept-retry-running';
+      const isHi = currentLang === 'hi';
+      retryEl.innerHTML = `<span class="spinner" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:6px"></span><strong>${isHi ? 'प्रयास 2:' : 'Attempt 2:'}</strong> ${isHi ? 'अवैध उद्धरणों को हटाकर पुनः सत्यापन जारी...' : 'Re-verifying citations after autonomous self-healing...'}`;
+      body.appendChild(retryEl);
+    }
+  } else {
+    body.innerHTML = '';
+  }
   body.classList.add('open');
 }
 
@@ -772,6 +2670,13 @@ function startAnalysis(forceBad = false) {
     handleStageDone(d);
   });
 
+  es.addEventListener('pipeline_error', e => {
+    const d = JSON.parse(e.data);
+    showPipelineError(d.message || 'Pipeline encountered an unexpected error.');
+    es.close();
+    $('analyze-btn').disabled = false;
+  });
+
   es.addEventListener('complete', e => {
     const d = JSON.parse(e.data);
     handleComplete(d);
@@ -782,6 +2687,7 @@ function startAnalysis(forceBad = false) {
   es.onerror = () => {
     es.close();
     $('analyze-btn').disabled = false;
+    showPipelineError('Connection to analysis stream interrupted. Check server status.');
   };
 }
 
@@ -834,19 +2740,69 @@ function handleStageDone(d) {
     setStageState(id, attempt === 0 ? 'done' : 'retrying');
     // Just show step count for now; full steps shown in roadmap
     const body = $(`stage-body-${id}`);
-    body.innerHTML = `<p style="font-size:12px;color:var(--muted)">${d.steps.length} roadmap step(s) drafted.</p>`;
+    body.innerHTML = `<p style="font-size:12px;color:var(--muted)">${(d.steps || []).length} roadmap step(s) drafted.</p>`;
     body.classList.add('open');
   }
 
   if (id === 4) {
-    setStageState(id, d.passed ? 'done' : 'failed');
+    stage4Attempts.push(d);
     const body = $(`stage-body-${id}`);
-    if (d.passed) {
-      body.innerHTML = `<div class="pass-item">✓ All citations verified against retrieved statutory chunks.</div>`;
+    const isHi = currentLang === 'hi';
+
+    if (!d.passed) {
+      setStageState(id, 'failed');
+      body.innerHTML = `
+        <div class="gatekeeper-intercept-box">
+          <div class="intercept-header">
+            <span class="intercept-badge">${isHi ? 'अवैध उद्धरण अवरुद्ध (प्रयास 1)' : '⛔ INTERCEPTED FABRICATED CITATION (PASS 1)'}</span>
+            <span class="intercept-time">${isHi ? 'गेटकीपर सक्रिय' : 'Gatekeeper Active'}</span>
+          </div>
+          <p class="intercept-intro">
+            ${isHi ?
+              'स्टेज 4 गेटकीपर ने संहिताबद्ध विधिक प्रावधानों (Patents Act, BDA, D&C Act) के आधार पर दावों का सत्यापन किया। <strong>1 असत्यापित/मनगढ़ंत धारा की पहचान की गई:</strong>' :
+              'Stage 4 Gatekeeper cross-referenced every claim against verified statutory chunks. <strong>1 ungrounded/hallucinated citation was detected with zero statutory backing:</strong>'}
+          </p>
+          ${(d.failed_claims || []).map(f => `
+            <div class="fail-item" style="border-left:3px solid #ef4444;background:rgba(239,68,68,0.12)">
+              <span>🚫</span>
+              <div>
+                <strong>${isHi ? 'अस्वीकृत विधिक धारा:' : 'Fabricated Legal Subject Matter:'}</strong><br>
+                <code>${f}</code>
+              </div>
+            </div>
+          `).join('')}
+          <div class="intercept-action-note">
+            <span>🔄</span>
+            <span><strong>${isHi ? 'स्वयं-सुधार चक्र सक्रिय:' : 'Self-Healing Triggered:'}</strong> ${isHi ? 'अवैध धारा को हटाकर रोडमैप का स्वतः पुनर्निर्माण शुरू किया जा रहा है...' : 'Rejecting draft, purging unverified citations, and auto-triggering re-synthesis...'}</span>
+          </div>
+        </div>
+      `;
     } else {
-      body.innerHTML = (d.failed_claims || []).map(f =>
-        `<div class="fail-item">✗ ${f}</div>`
-      ).join('') + `<p style="font-size:12px;color:var(--muted);margin-top:8px">→ Retrying synthesis…</p>`;
+      const retryEl = $('stage4-retry-running');
+      if (retryEl) retryEl.remove();
+
+      if (stage4Attempts.length > 1 || (d.attempt && d.attempt > 0)) {
+        // We had a prior failure on Attempt 0 and now we passed on Attempt 1!
+        const healBox = document.createElement('div');
+        healBox.className = 'gatekeeper-heal-box';
+        healBox.innerHTML = `
+          <div class="heal-header">
+            <span class="heal-badge">${isHi ? 'स्वयं-सुधार सफल (प्रयास 2)' : '🛡️ SELF-HEALING REPAIR SUCCESSFUL (PASS 2)'}</span>
+            <span class="heal-status">✓ ${isHi ? 'सत्यापित' : '100% Grounded'}</span>
+          </div>
+          <p class="heal-desc">
+            ${isHi ?
+              '<strong>विधिक प्रामाणिकता पुष्ट:</strong> सभी मनगढ़ंत धाराएं हटा दी गई हैं। रोडमैप की प्रत्येक सिफारिश आधिकारिक विधिक धाराओं से पूर्णतः सत्यापित है।' :
+              '<strong>100% Statutory Grounding Confirmed:</strong> Fabricated citations were autonomously purged. All remaining legal recommendations are strictly grounded in retrieved statutory chunks.'}
+          </p>
+        `;
+        body.appendChild(healBox);
+        setStageState(id, 'done');
+        $(`stage-icon-${id}`).innerHTML = '<span style="color:#00d9a3;font-weight:bold;font-size:13px" title="Intercepted & Healed">🛡️✓</span>';
+      } else {
+        setStageState(id, 'done');
+        body.innerHTML = `<div class="pass-item">✓ ${isHi ? 'सभी उद्धरण विधिक संहिताओं से सत्यापित हैं।' : 'All citations verified against retrieved statutory chunks.'}</div>`;
+      }
     }
     body.classList.add('open');
   }
@@ -868,7 +2824,10 @@ function handleStageDone(d) {
   }
 }
 
+let lastCompleteData = null;
+
 function handleComplete(d) {
+  lastCompleteData = d;
   // TKRC
   if (d.tkrc_match) {
     const m = d.tkrc_match;
@@ -908,34 +2867,1140 @@ function handleComplete(d) {
   // Roadmap
   if (d.steps && d.steps.length) {
     $('roadmap-block').style.display = 'block';
+    const isHi = currentLang === 'hi';
+
+    // Hallucination Intercept & Auto-Healed Banner
+    const healedBanner = $('roadmap-healed-banner');
+    if (healedBanner) {
+      if (d.retries_used > 0) {
+        healedBanner.className = 'healed-banner';
+        healedBanner.innerHTML = `
+          <div class="healed-banner-left">🛡️</div>
+          <div class="healed-banner-content">
+            <div class="healed-banner-top">
+              <span class="healed-pill-tag">${isHi ? 'भ्रांति निवारण सत्यापन डेमो सक्रिय' : 'HALLUCINATION INTERCEPT DEMO ACTIVE'}</span>
+              <span class="healed-badge-small">${isHi ? '1 मनगढ़ंत धारा पकड़ी गई · 1 स्वतः-सुधार चक्र पूर्ण' : '1 Intercepted · 1 Auto-Healed Pass'}</span>
+            </div>
+            <div class="healed-banner-title">
+              ${isHi ? 'गेटकीपर ने अवैध धारा को पकड़ा — विधिक देयता रोकी और रोडमैप को स्वतः सुधारित किया' : 'Gatekeeper Successfully Intercepted Fabricated Claim & Auto-Healed Roadmap'}
+            </div>
+            <p class="healed-banner-desc">
+              ${isHi ?
+                'पाइपलाइन के प्रथम प्रयास (Pass 1) में कृत्रिम रूप से एक असत्यापित धारा (<code>Patents Act § 3(k)</code>) इंजेक्ट की गई थी। <strong>स्टेज 4 साइटेशन सत्यापन गेटकीपर</strong> ने तुरंत इसे पकड़ा, अस्वीकृत किया और विधिक देयता से बचने हेतु रोडमैप का पुनः निर्माण कराया। नीचे दिया गया रोडमैप 100% आधिकारिक विधिक संहिताओं से सत्यापित है।' :
+                'On Pass 1, a synthetic hallucinated claim (<code>Patents Act § 3(k) - Software Exclusions</code>) was injected into synthesis. The <strong>Deterministic Citation Verifier (Stage 4)</strong> flagged the invalid chunk, blocked delivery to prevent legal liability, and triggered an autonomous self-healing loop on Pass 2. The delivered strategy below is 100% verified against authentic statutory chunks.'}
+            </p>
+          </div>
+        `;
+        healedBanner.style.display = 'flex';
+      } else {
+        healedBanner.style.display = 'none';
+        healedBanner.innerHTML = '';
+      }
+    }
+    
+    // Render Strategic Posture Banner & Milestones
+    const postureBarrier = $('posture-barrier');
+    const postureReadiness = $('posture-readiness');
+    const postureRemedy = $('posture-remedy');
+    
+    if (d.classification === 'Classical') {
+      postureBarrier.textContent = isHi ? 
+        "धारा 3(p) पारंपरिक ज्ञान अपवर्जन (कठोर प्रतिबंध)" : 
+        "Section 3(p) Traditional Knowledge Bar (Strictly Non-Patentable)";
+      postureBarrier.className = "posture-val alert-red";
+      
+      postureReadiness.textContent = isHi ? 
+        "95% जीआई एवं ब्रांड संरक्षण हेतु तैयार" : 
+        "95% Ready for GI & Brand Protection";
+      postureReadiness.className = "posture-val alert-green";
+      
+      postureRemedy.textContent = isHi ? 
+        "जीआई अधिनियम 1999 + वर्ग 5 ट्रेडमार्क + राज्य बोर्ड धारा 7 सूचना" : 
+        "GI Act 1999 Collective Monopoly + Class 5 TM + SBB §7 Intimation";
+      postureRemedy.className = "posture-val alert-blue";
+    } else if (d.classification === 'Phytopharmaceutical') {
+      postureBarrier.textContent = isHi ? 
+        "GSR 918(E) औषध मानक एवं CDSCO चरण I/II अनुमोदन" : 
+        "GSR 918(E) Chemical Fingerprinting & CDSCO Phase I/II Clinical Trials";
+      postureBarrier.className = "posture-val alert-amber";
+      
+      postureReadiness.textContent = isHi ? 
+        "82% विनियामक एवं पेटेंट मार्ग पर" : 
+        "82% Regulatory & Patent Pipeline Score";
+      postureReadiness.className = "posture-val alert-green";
+      
+      postureRemedy.textContent = isHi ? 
+        "4-मार्कर HPLC प्रोफाइलिंग + एनबीए फॉर्म 3 + नवीन निष्कर्षण प्रक्रिया पेटेंट" : 
+        "4-Marker HPLC Fingerprint + NBA Form 3 + Novel Extraction Method Patent";
+      postureRemedy.className = "posture-val alert-blue";
+    } else if (d.classification === 'Patent&Proprietary') {
+      postureBarrier.textContent = isHi ? 
+        "धारा 3(e) केवल मिश्रण एवं धारा 3(d) वर्धित प्रभावकारिता चुनौती" : 
+        "Section 3(e) Mere Admixture & Section 3(d) Enhanced Efficacy Burden";
+      postureBarrier.className = "posture-val alert-amber";
+      
+      postureReadiness.textContent = isHi ? 
+        "78% पेटेंट योग्यता (सिनर्जी डेटा आवश्यक)" : 
+        "78% Patentability (Requires Synergy Data)";
+      postureReadiness.className = "posture-val alert-amber";
+      
+      postureRemedy.textContent = isHi ? 
+        "सिनर्जिस्टिक अनुपात परीक्षण + एनबीए फॉर्म 3 पूर्व अनुमति + आयुष नियम 158B लाइसेंस" : 
+        "Isobolar Synergy Proof + Mandatory NBA Form 3 + State AYUSH Rule 158B";
+      postureRemedy.className = "posture-val alert-blue";
+    } else if (d.classification === 'Aahar') {
+      postureBarrier.textContent = isHi ? 
+        "आयुर्वेद आहार विनियम 2022 (चिकित्सीय दावों पर पूर्ण प्रतिबंध)" : 
+        "FSSAI Ayurvedic Aahar 2022 Regs (Prohibition on Medical/Disease Claims)";
+      postureBarrier.className = "posture-val alert-blue";
+      
+      postureReadiness.textContent = isHi ? 
+        "92% वाणिज्यिक खाद्य लॉन्च तत्परता" : 
+        "92% Ready for Functional Food Launch";
+      postureReadiness.className = "posture-val alert-green";
+      
+      postureRemedy.textContent = isHi ? 
+        "FSSAI अनुसूची क खाद्य पंजीकरण + ट्रेड सीक्रेट्स + वर्ग 29/30 ट्रेडमार्क" : 
+        "FSSAI Schedule A Registration + Trade Secret + Class 29/30 Trademark";
+      postureRemedy.className = "posture-val alert-green";
+    } else {
+      postureBarrier.textContent = isHi ? 
+        "अस्पष्ट विधिक वर्गीकरण (TKDL पूर्व कला संदिग्ध)" : 
+        "Ambiguous Prior Art Boundary (Potential Section 3p Disqualification)";
+      postureBarrier.className = "posture-val alert-red";
+      
+      postureReadiness.textContent = isHi ? 
+        "45% तत्परता (मानव विशेषज्ञ समीक्षा अनिवार्य)" : 
+        "45% Readiness (Human Review Required)";
+      postureReadiness.className = "posture-val alert-red";
+      
+      postureRemedy.textContent = isHi ? 
+        "आयुष आईपी सेल द्वारा विस्तृत TKDL एवं पूर्व-कला अन्वेषण" : 
+        "Comprehensive TKDL & Patent Prior Art Landscape by AYUSH IP Cell";
+      postureRemedy.className = "posture-val alert-amber";
+    }
+
+    $('roadmap-posture').style.display = 'grid';
+    $('roadmap-phases').style.display = 'grid';
+
+    // Update filter counts
+    const cAll = d.steps.length;
+    const cP1 = d.steps.filter(s => (s.phase || '').includes('1')).length;
+    const cP2 = d.steps.filter(s => (s.phase || '').includes('2')).length;
+    const cP3 = d.steps.filter(s => (s.phase || '').includes('3')).length;
+    const cP4 = d.steps.filter(s => (s.phase || '').includes('4')).length;
+    const cRisk = d.steps.filter(s => s.risk_level === 'high' || s.risk_level === 'blocker').length;
+
+    if ($('count-all')) $('count-all').textContent = cAll;
+    if ($('count-p1')) $('count-p1').textContent = cP1;
+    if ($('count-p2')) $('count-p2').textContent = cP2;
+    if ($('count-p3')) $('count-p3').textContent = cP3;
+    if ($('count-p4')) $('count-p4').textContent = cP4;
+    if ($('count-risk')) $('count-risk').textContent = cRisk;
+
+    if ($('roadmap-toolbar')) $('roadmap-toolbar').style.display = 'flex';
+
     const steps = $('roadmap-steps');
+    steps.innerHTML = '';
     d.steps.forEach((s, i) => {
       const card = document.createElement('div');
       card.className = 'step-card';
       card.dataset.risk = s.risk_level;
       card.style.animationDelay = (i * 0.08) + 's';
+      const safeDeliv = (s.deliverable || '').replace(/'/g, "\\'");
       card.innerHTML = `
-        <div class="step-top">
-          <span class="risk-badge ${s.risk_level}">${s.risk_level.toUpperCase()}</span>
-          <span class="step-action">${s.action}</span>
+        <div class="step-top" style="justify-content:space-between;align-items:center;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="risk-badge ${s.risk_level}">${s.risk_level.toUpperCase()}</span>
+            ${s.phase ? `<span class="step-phase-tag">${s.phase}</span>` : ''}
+          </div>
+          ${s.timeline_note ? `<span class="timeline-note" style="margin-top:0">🕐 ${s.timeline_note}</span>` : ''}
         </div>
+
+        <div class="step-action" style="margin-top:8px;margin-bottom:6px">${s.action}</div>
         <p class="step-rationale">${s.rationale}</p>
-        ${s.citations && s.citations.length ? `
-          <div class="step-citations">
-            ${s.citations.map(c =>
-              `<span class="citation-chip" title="${c.chunk_id}">${c.act} §${c.section}</span>`
-            ).join('')}
+
+        <!-- Meta Grid: Governing Authority & Deliverable -->
+        ${(s.governing_authority || s.deliverable) ? `
+          <div class="step-card-meta">
+            ${s.governing_authority ? `
+              <div class="meta-box">
+                <span class="meta-label"><span>🏛️</span> <span data-i18n="lbl_step_gov">Governing Authority</span></span>
+                <span class="meta-val">${s.governing_authority}</span>
+              </div>
+            ` : ''}
+            ${s.deliverable ? `
+              <div class="meta-box">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px">
+                  <span class="meta-label"><span>📄</span> <span data-i18n="lbl_step_deliv">Official Deliverable</span></span>
+                  <button type="button" class="btn-copy-deliv" onclick="copyText('${safeDeliv}', 'Deliverable')" title="Copy deliverable name">
+                    <span style="font-size:9px">📋</span> <span data-i18n="btn_copy_short">${isHi ? 'कॉपी' : 'Copy'}</span>
+                  </button>
+                </div>
+                <span class="meta-val" style="color:var(--accent)">${s.deliverable}</span>
+              </div>
+            ` : ''}
           </div>
         ` : ''}
-        ${s.timeline_note ? `
-          <div class="timeline-note">🕐 ${s.timeline_note}</div>
+
+        <!-- Statutory Hazard Alert -->
+        ${s.statutory_hazard ? `
+          <div class="step-hazard-box">
+            <span>⚠️</span>
+            <div><strong>${isHi ? 'विधिक जोखिम (Statutory Hazard): ' : 'Statutory Hazard: '}</strong>${s.statutory_hazard}</div>
+          </div>
+        ` : ''}
+
+        <!-- Operational Guidance -->
+        ${s.operational_guidance ? `
+          <div class="step-guidance-box">
+            <span>👉</span>
+            <div><strong>${isHi ? 'कार्ययोजना (Next Steps): ' : 'Operational Guidance: '}</strong>${s.operational_guidance}</div>
+          </div>
+        ` : ''}
+
+        <!-- Grounding Citations -->
+        ${s.citations && s.citations.length ? `
+          <div class="step-citations" style="margin-top:10px">
+            <span style="font-size:10px;color:var(--muted);text-transform:uppercase;font-weight:600;display:inline-flex;align-items:center;gap:4px">
+              <span>📜</span> ${isHi ? 'सत्यापित संदर्भ:' : 'Statutory Citations:'}
+            </span>
+            ${s.citations.map(c =>
+              `<span class="citation-chip" title="${c.chunk_id}">§ ${c.section} · ${c.act}</span>`
+            ).join('')}
+          </div>
         ` : ''}
       `;
       steps.appendChild(card);
     });
+
+    setRoadmapFilter(currentRoadmapFilter);
+  }
+
+  // Show Radar Scorecard
+  renderRadar(d.classification, d.confidence_score);
+  $('scorecard-block').style.display = 'block';
+
+  // Show GI Registry Map
+  renderGiBlock(d.classification);
+  $('gi-block').style.display = 'block';
+
+  // Show NBA Form 3 CTA if relevant
+  if (d.classification === 'Patent&Proprietary' || d.classification === 'Phytopharmaceutical') {
+    $('nba-cta-container').style.display = 'block';
+  }
+}
+
+// ── Radar Chart Generator ────────────────────────────────────────────────
+function renderRadar(classification, conf) {
+  const svg = $('radar-svg');
+  const container = $('scorecard-meters');
+  if (!svg || !container) return;
+
+  // 5 Axes: TK Risk, Efficacy Hurdle (3d), NBA Clearance, Regulatory FTO, Brand/GI Equity
+  let metrics = [
+    { key: 'tk', label: 'Traditional Knowledge (§ 3p)', val: 0.2, color: '#38bdf8' },
+    { key: 'sec3d', label: 'Efficacy Hurdle (§ 3d)', val: 0.5, color: '#f59e0b' },
+    { key: 'nba', label: 'Biodiversity Compliance (NBA)', val: 0.6, color: '#ec4899' },
+    { key: 'fto', label: 'Regulatory Freedom (FSSAI/AYUSH)', val: 0.7, color: '#10b981' },
+    { key: 'brand', label: 'Brand & GI Monopolizability', val: 0.8, color: '#8b5cf6' },
+  ];
+
+  if (classification === 'Classical') {
+    metrics = [
+      { key: 'tk', label: 'Traditional Knowledge (§ 3p)', val: 0.95, color: '#ef4444', desc: 'Critical Bar (Barred)' },
+      { key: 'sec3d', label: 'Efficacy Hurdle (§ 3d)', val: 0.15, color: '#10b981', desc: 'Not Applicable' },
+      { key: 'nba', label: 'Biodiversity Compliance (NBA)', val: 0.45, color: '#f59e0b', desc: 'SBB Notice Required' },
+      { key: 'fto', label: 'Regulatory Freedom (AYUSH API)', val: 0.85, color: '#10b981', desc: 'Form 25D Standard' },
+      { key: 'brand', label: 'Brand & GI Monopolizability', val: 0.90, color: '#8b5cf6', desc: 'High (GI & TM Route)' },
+    ];
+  } else if (classification === 'Patent&Proprietary') {
+    metrics = [
+      { key: 'tk', label: 'Traditional Knowledge (§ 3p)', val: 0.15, color: '#10b981', desc: 'Low Risk' },
+      { key: 'sec3d', label: 'Efficacy Hurdle (§ 3d)', val: 0.88, color: '#ef4444', desc: 'High Hurdle (Proof Needed)' },
+      { key: 'nba', label: 'Biodiversity Compliance (NBA)', val: 0.92, color: '#ec4899', desc: 'Form 3 Mandatory' },
+      { key: 'fto', label: 'Regulatory Freedom (P&P License)', val: 0.70, color: '#f59e0b', desc: 'State AYUSH 3(h)' },
+      { key: 'brand', label: 'Brand & GI Monopolizability', val: 0.85, color: '#8b5cf6', desc: 'High Patentability' },
+    ];
+  } else if (classification === 'Phytopharmaceutical') {
+    metrics = [
+      { key: 'tk', label: 'Traditional Knowledge (§ 3p)', val: 0.20, color: '#10b981', desc: 'Low TK Risk' },
+      { key: 'sec3d', label: 'Efficacy Hurdle (§ 3d)', val: 0.85, color: '#f59e0b', desc: 'Clinical Data Needed' },
+      { key: 'nba', label: 'Biodiversity Compliance (NBA)', val: 0.95, color: '#ef4444', desc: 'Form 3 Mandatory' },
+      { key: 'fto', label: 'Regulatory Freedom (CDSCO Trial)', val: 0.50, color: '#f59e0b', desc: 'New Drug Clearance' },
+      { key: 'brand', label: 'Brand & GI Monopolizability', val: 0.92, color: '#8b5cf6', desc: 'High Global Value' },
+    ];
+  } else if (classification === 'Aahar') {
+    metrics = [
+      { key: 'tk', label: 'Traditional Knowledge (§ 3p)', val: 0.10, color: '#10b981', desc: 'Exempt (Food)' },
+      { key: 'sec3d', label: 'Efficacy Hurdle (§ 3d)', val: 0.10, color: '#10b981', desc: 'No Drug Proof' },
+      { key: 'nba', label: 'Biodiversity Compliance (NBA)', val: 0.35, color: '#10b981', desc: 'SBB Intimation' },
+      { key: 'fto', label: 'Regulatory Freedom (FSSAI Reg 5)', val: 0.80, color: '#10b981', desc: 'Fast-Track FSSAI' },
+      { key: 'brand', label: 'Brand & GI Monopolizability', val: 0.75, color: '#8b5cf6', desc: 'Trade Dress & TM' },
+    ];
+  } else {
+    // Ambiguous
+    metrics = [
+      { key: 'tk', label: 'Traditional Knowledge (§ 3p)', val: 0.55, color: '#f59e0b', desc: 'Undetermined' },
+      { key: 'sec3d', label: 'Efficacy Hurdle (§ 3d)', val: 0.60, color: '#f59e0b', desc: 'Undetermined' },
+      { key: 'nba', label: 'Biodiversity Compliance (NBA)', val: 0.65, color: '#f59e0b', desc: 'Check Source' },
+      { key: 'fto', label: 'Regulatory Freedom (Triage)', val: 0.40, color: '#ef4444', desc: 'Needs IP Clinic' },
+      { key: 'brand', label: 'Brand & GI Monopolizability', val: 0.45, color: '#f59e0b', desc: 'Requires Audit' },
+    ];
+  }
+
+  // Draw SVG
+  const cx = 110, cy = 110, R = 75, total = 5;
+  let gridPaths = '';
+  [0.33, 0.66, 1.0].forEach(level => {
+    let pts = [];
+    for (let i = 0; i < total; i++) {
+      const a = (i * 2 * Math.PI / total) - Math.PI / 2;
+      pts.push(`${cx + R * level * Math.cos(a)},${cy + R * level * Math.sin(a)}`);
+    }
+    gridPaths += `<polygon points="${pts.join(' ')}" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>`;
+  });
+
+  let spokes = '';
+  let dataPoints = [];
+  for (let i = 0; i < total; i++) {
+    const a = (i * 2 * Math.PI / total) - Math.PI / 2;
+    const sx = cx + R * Math.cos(a);
+    const sy = cy + R * Math.sin(a);
+    spokes += `<line x1="${cx}" y1="${cy}" x2="${sx}" y2="${sy}" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>`;
+    const rVal = R * Math.max(0.15, metrics[i].val);
+    dataPoints.push(`${cx + rVal * Math.cos(a)},${cy + rVal * Math.sin(a)}`);
+  }
+
+  const polygonSvg = `<polygon points="${dataPoints.join(' ')}" fill="rgba(0,229,163,0.22)" stroke="#00e5a3" stroke-width="2"/>`;
+  const dotsSvg = dataPoints.map((p, idx) => {
+    const [px, py] = p.split(',');
+    return `<circle cx="${px}" cy="${py}" r="4.5" class="radar-vertex-dot" data-idx="${idx}" fill="#00e5a3" stroke="#06080e" stroke-width="2"/>`;
+  }).join('');
+
+  svg.innerHTML = gridPaths + spokes + polygonSvg + dotsSvg;
+
+  // Render Meters with id and data-idx
+  container.innerHTML = metrics.map((m, idx) => `
+    <div class="meter-row" id="meter-row-${idx}" data-idx="${idx}">
+      <div class="meter-head">
+        <span class="meter-title">${m.label}</span>
+        <span class="meter-val" style="color:${m.color}">${Math.round(m.val * 100)}% <span style="font-size:10px;font-weight:normal;opacity:0.8">(${m.desc})</span></span>
+      </div>
+      <div class="meter-track">
+        <div class="meter-fill" style="width:${Math.round(m.val * 100)}%;background:${m.color}"></div>
+      </div>
+    </div>
+  `).join('');
+
+  // Attach interactive tooltip and meter synchronization
+  const tooltip = $('radar-tooltip');
+  svg.querySelectorAll('.radar-vertex-dot').forEach(dot => {
+    dot.addEventListener('mouseenter', () => {
+      const idx = parseInt(dot.dataset.idx);
+      const m = metrics[idx];
+      if (tooltip) {
+        tooltip.innerHTML = `<strong>${m.label}</strong>: <span style="color:${m.color}">${Math.round(m.val * 100)}%</span> (${m.desc})`;
+        tooltip.classList.add('show');
+      }
+      const row = $(`meter-row-${idx}`);
+      if (row) row.classList.add('meter-highlight');
+    });
+    dot.addEventListener('mouseleave', () => {
+      if (tooltip) tooltip.classList.remove('show');
+      document.querySelectorAll('.meter-row').forEach(r => r.classList.remove('meter-highlight'));
+    });
+  });
+
+  container.querySelectorAll('.meter-row').forEach(row => {
+    row.addEventListener('mouseenter', () => {
+      const idx = parseInt(row.dataset.idx);
+      const dot = svg.querySelector(`.radar-vertex-dot[data-idx="${idx}"]`);
+      if (dot) {
+        dot.setAttribute('r', '7');
+        dot.setAttribute('fill', '#ffffff');
+      }
+      row.classList.add('meter-highlight');
+    });
+    row.addEventListener('mouseleave', () => {
+      const idx = parseInt(row.dataset.idx);
+      const dot = svg.querySelector(`.radar-vertex-dot[data-idx="${idx}"]`);
+      if (dot) {
+        dot.setAttribute('r', '4.5');
+        dot.setAttribute('fill', '#00e5a3');
+      }
+      row.classList.remove('meter-highlight');
+    });
+  });
+}
+
+// ── NBA Modal Controls ───────────────────────────────────────────────────
+function openNbaModal() {
+  const ing = $('ingredients').value || 'Ayurvedic botanical resources';
+  const proc = $('extraction_method').value || 'Standardized laboratory extraction';
+  const claims = $('claims_text').value || 'Therapeutic composition';
+  const jurisdiction = $('jurisdiction').value;
+
+  $('nba-bio-resources').textContent = ing;
+  $('nba-process-summary').textContent = proc;
+  $('nba-invention-title').textContent = claims.substring(0, 180) + (claims.length > 180 ? '…' : '');
+  $('nba-today-date').textContent = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' });
+  
+  $('nba-modal').classList.add('open');
+}
+
+function closeNbaModal() {
+  $('nba-modal').classList.remove('open');
+}
+
+// ── Scenario Variant Intelligence ─────────────────────────────────────────
+const SCENARIO_INTEL = {
+  classical: {
+    pillClass: 'bar-red',
+    icon: '🚫',
+    title: 'Classical Prior Art · Barred (§ 3p)',
+    titleHi: 'शास्त्रीय पारंपरिक ज्ञान · पेटेंट वर्जित (धारा 3p)',
+    badge: 'Prior Art Bar',
+    badgeHi: 'पारंपरिक ज्ञान',
+    desc: '100% Traditional Knowledge. Barred from patenting per Section 3(p). Commercial path: GI Act 1999 regional monopoly & Trademark.',
+    descHi: '100% पारंपरिक ज्ञान। धारा 3(p) के तहत पेटेंट वर्जित। व्यावसायिक विकल्प: जीआई अधिनियम 1999 क्षेत्रीय एकाधिकार एवं ट्रेडमार्क।',
+    actionBtn: 'Analyze Classical Formulation →',
+    actionBtnHi: 'शास्त्रीय फॉर्मूलेशन का विश्लेषण करें →',
+    nbaShortcut: false
+  },
+  phytopharma: {
+    pillClass: 'bar-green',
+    icon: '✨',
+    title: 'Novel Phytopharmaceutical · Patentable',
+    titleHi: 'अभिनव फाइटोफार्मास्युटिकल · उच्च पेटेंट योग्यता',
+    badge: 'Patentable Composition',
+    badgeHi: 'पेटेंट योग्य योग',
+    desc: 'Standardized bioactive fraction with novel extraction/delivery. Clears Section 3(p) & 3(d). Mandatory NBA Form 3 approval required.',
+    descHi: 'मानकीकृत बायो-एक्टिव अंश। धारा 3(p) व 3(d) को पार करता है। एनबीए फॉर्म 3 अनुमोदन अनिवार्य।',
+    actionBtn: 'Analyze Phytopharmaceutical →',
+    actionBtnHi: 'फाइटोफार्मा फॉर्मूलेशन का विश्लेषण करें →',
+    nbaShortcut: true
+  },
+  patent_proprietary: {
+    pillClass: 'bar-amber',
+    icon: '⚠️',
+    title: 'Patent & Proprietary · Efficacy Hurdle (§ 3d)',
+    titleHi: 'पेटेंट एवं प्रोप्राइटरी · प्रभावकारिता बाधा (धारा 3d)',
+    badge: 'Synergy Proof Req.',
+    badgeHi: 'सिनर्जी प्रमाण आवश्यक',
+    desc: 'Proprietary polyherbal combination. Requires comparative clinical efficacy data proving synergy over individual traditional ingredients.',
+    descHi: 'स्वामित्व संयोजन। एकल शास्त्रीय घटकों की तुलना में सिनर्जिस्टिक प्रभावकारिता वृद्धि का नैदानिक प्रमाण आवश्यक।',
+    actionBtn: 'Analyze P&P Formulation →',
+    actionBtnHi: 'पी&पी फॉर्मूलेशन का विश्लेषण करें →',
+    nbaShortcut: true
+  },
+  aahar: {
+    pillClass: 'bar-blue',
+    icon: '🥗',
+    title: 'Ayurvedic Aahar · FSSAI Food Pathway',
+    titleHi: 'आयुर्वेद आहार · FSSAI त्वरित विनियामक मार्ग',
+    badge: 'Food Category',
+    badgeHi: 'खाद्य श्रेणी',
+    desc: 'Traditional dietary recipe regulated under FSSAI Ayurvedic Aahar Reg 2022. Fast market entry exempt from drug clinical trials.',
+    descHi: 'पारंपरिक आहार योग। FSSAI आयुर्वेद आहार नियम 2022 के तहत नियमित। औषधि नैदानिक परीक्षणों से मुक्त त्वरित बाजार प्रवेश।',
+    actionBtn: 'Analyze Ayurveda Aahar →',
+    actionBtnHi: 'आयुर्वेद आहार का विश्लेषण करें →',
+    nbaShortcut: false
+  },
+  ambiguous: {
+    pillClass: 'bar-amber',
+    icon: '❓',
+    title: 'Ambiguous / Hybrid · Prior Art Audit Needed',
+    titleHi: 'अस्पष्ट / संशयपूर्ण · आईपी ऑडिट आवश्यक',
+    badge: 'Requires Triage',
+    badgeHi: 'ट्राइएज आवश्यक',
+    desc: 'Unspecified extraction ratios or broad claims. Low-confidence triage routes formulation to IP Expert Clinic & TKDL prior-art search.',
+    descHi: 'अस्पष्ट निष्कर्षण अनुपात या व्यापक दावे। TKDL पूर्व-कला खोज एवं विशेषज्ञ क्लिनिक परामर्श हेतु अनुशंसित।',
+    actionBtn: 'Analyze Ambiguous Case →',
+    actionBtnHi: 'अस्पष्ट मामले का विश्लेषण करें →',
+    nbaShortcut: false
+  },
+  'bad-citation': {
+    pillClass: 'bar-purple',
+    icon: '⚡',
+    title: 'Deliberate Hallucination Catch Demo',
+    titleHi: 'भ्रांति पहचान एवं स्वतः-सुधार डेमो (Gatekeeper Test)',
+    badge: 'Self-Healing Test',
+    badgeHi: 'स्वयं-सुधार परीक्षण',
+    desc: 'Injects a synthetic invalid citation (Patents Act § 3k) on Attempt 1. Demonstrates Stage 4 Gatekeeper auto-rejection, preventing legal liability, and successful self-healing re-synthesis on Attempt 2.',
+    descHi: 'प्रयास 1 में एक नकली धारा (Patents Act § 3k) इंजेक्ट करता है। स्टेज 4 गेटकीपर द्वारा स्वचालित अस्वीकृति (विधिक सुरक्षा) और प्रयास 2 में सफल स्वतः-सुधार का जीवंत प्रदर्शन।',
+    actionBtn: '⚡ Run Hallucination Catch Demo →',
+    actionBtnHi: '⚡ भ्रांति पहचान डेमो चलाएं →',
+    nbaShortcut: false
+  }
+};
+
+let currentScenarioKey = null;
+
+function updateScenarioIntel(key) {
+  const intel = SCENARIO_INTEL[key];
+  const box = $('scenario-intel-box');
+  if (!intel || !box) return;
+  currentScenarioKey = key;
+
+  box.style.display = 'block';
+  const pill = $('scenario-intel-pill');
+  pill.className = `scenario-intel-pill ${intel.pillClass}`;
+  $('scenario-intel-icon').textContent = intel.icon;
+
+  const isHi = currentLang === 'hi';
+  $('scenario-intel-title').textContent = isHi ? intel.titleHi : intel.title;
+  $('scenario-intel-badge').textContent = isHi ? intel.badgeHi : intel.badge;
+  $('scenario-intel-desc').textContent = isHi ? intel.descHi : intel.desc;
+
+  const actions = $('scenario-intel-actions');
+  if (actions) {
+    actions.style.display = intel.nbaShortcut ? 'block' : 'none';
+  }
+
+  // Update analyze button text
+  $('analyze-btn').textContent = isHi ? intel.actionBtnHi : intel.actionBtn;
+}
+
+// ── Feature 4: Interactive GI Hub Registry ──────────────────────────────
+const GI_HUBS = {
+  kashmir: {
+    title: "Kashmir Valley Botanical Hub",
+    titleHi: "कश्मीर घाटी वानस्पतिक केंद्र",
+    state: "Jammu & Kashmir (Pampore / Kishtwar)",
+    stateHi: "जम्मू एवं कश्मीर (पाम्पोर / किश्तवाड़)",
+    regNo: "GI Reg. #635 & #636",
+    color: "#f59e0b",
+    items: [
+      { name: "Kashmiri Saffron (Crocus sativus)", icon: "🌸" },
+      { name: "Kashmir Walnut", icon: "🌰" },
+      { name: "Kashmiri Guchhi (Wild Morel)", icon: "🍄" },
+      { name: "Bhaderwah Rajmash", icon: "🫘" }
+    ],
+    itemsHi: [
+      { name: "कश्मीरी केसर (Crocus sativus)", icon: "🌸" },
+      { name: "कश्मीर अखरोट", icon: "🌰" },
+      { name: "कश्मीरी गुच्छी (जंगली मशरूम)", icon: "🍄" },
+      { name: "भद्रवाह राजमा", icon: "🫘" }
+    ],
+    statute: "GI Act 1999 (§ 21 Exclusivity & § 23 Injunction against Infringement / False Indications).",
+    statuteHi: "जीआई अधिनियम 1999 (धारा 21 अनन्य अधिकार एवं धारा 23 उल्लंघन/भ्रामक दावों पर रोक)।",
+    commercial: "Commands 45-70% global export price premium; mandatory GI QR/hologram seals protect against foreign adulteration.",
+    commercialHi: "45-70% वैश्विक निर्यात मूल्य प्रीमियम; अनिवार्य जीआई क्यूआर/होलोग्राम विदेशी मिलावट से सुरक्षा प्रदान करते हैं।",
+    ayush: "Essential classical ingredient in Kumkumadi Tailam & Chyawanprash. Authentic GI certificate fulfills NBA/SBB Access and Benefit Sharing origin clearance under BD Act 2002.",
+    ayushHi: "कुंकुमादि तैलम और च्यवनप्राश में आवश्यक शास्त्रीय घटक। प्रामाणिक जीआई प्रमाणपत्र जैव विविधता अधिनियम 2002 के तहत एनबीए/एसबीबी स्रोत सत्यापन सुनिश्चित करता है।",
+    phytochemMarker: "Crocin (≥16%), Safranal (≥3%), Picrocrocin (HPLC Grade I ISO 3632)",
+    phytochemMarkerHi: "क्रोसिन (≥16%), सैफ्रानल (≥3%), पिक्रॉक्रोसिन (HPLC ग्रेड I ISO 3632)",
+    treatiseRef: "Charaka Samhita, Chikitsa Sthana (Kumkumadi Taila & Varnya Dashemani)",
+    treatiseRefHi: "चरक संहिता, चिकित्सा स्थान (कुंकुमादि तैल एवं वर्ण्य दशेमानि)",
+    exportPremium: "+55% to +75% Export Price Realization",
+    exportPremiumHi: "+55% से +75% निर्यात मूल्य प्रीमियम (जीआई होलोग्राम)",
+    fpoAssociation: "All Jammu & Kashmir Saffron Growers Cooperative Association (Pampore)",
+    fpoAssociationHi: "ऑल जम्मू एंड कश्मीर सैफ्रॉन ग्रोअर्स को-ऑपरेटिव एसोसिएशन (पाम्पोर)"
+  },
+  himalayas: {
+    title: "Western Himalayas & Kumaon Hub",
+    titleHi: "पश्चिमी हिमालय एवं कुमाऊं केंद्र",
+    state: "Himachal Pradesh & Uttarakhand",
+    stateHi: "हिमाचल प्रदेश एवं उत्तराखण्ड",
+    regNo: "GI Reg. #498, #521 & #438",
+    color: "#38bdf8",
+    items: [
+      { name: "Uttarakhand Tejpatta (Bay Leaf)", icon: "🍃" },
+      { name: "Kangra Tea (Camellia sinensis)", icon: "🍵" },
+      { name: "Chamba Chukh (Chilli Paste)", icon: "🌶️" },
+      { name: "Munsyari White Rajma", icon: "🫘" }
+    ],
+    itemsHi: [
+      { name: "उत्तराखण्ड तेजपत्ता (Bay Leaf)", icon: "🍃" },
+      { name: "कांगड़ा चाय", icon: "🍵" },
+      { name: "चंबा चुख (पारंपरिक मिर्च)", icon: "🌶️" },
+      { name: "मुनस्यारी सफेद राजमा", icon: "🫘" }
+    ],
+    statute: "GI Act 1999 (§ 66 Protection of Authorized Users & BD Act 2002 SBB Notification).",
+    statuteHi: "जीआई अधिनियम 1999 (धारा 66 अधिकृत उपयोगकर्ता संरक्षण एवं राज्य जैव विविधता बोर्ड अधिसूचना)।",
+    commercial: "EU Protected GI designation for Kangra; high therapeutic cinnamic aldehyde & polyphenol content.",
+    commercialHi: "कांगड़ा चाय को यूरोपीय संघ (EU) द्वारा संरक्षित GI मान्यता; उच्च औषधीय पॉलीफेनोल सामग्री।",
+    ayush: "Key classical ingredient in Trikatu & Sudarshan Churna; prevents biopiracy and certifies genuine wild-crafted Himalayan collection.",
+    ayushHi: "त्रिकटु और सुदर्शन चूर्ण में प्रमुख शास्त्रीय घटक; बायो-पायरेसी रोकता है और वास्तविक हिमालयी संग्रह प्रमाणित करता है।",
+    phytochemMarker: "Cinnamic aldehyde (≥65%), Eugenol, Polyphenols (LC-MS certified)",
+    phytochemMarkerHi: "सिनामिक एल्डिहाइड (≥65%), यूजेनॉल, पॉलीफेनॉल्स (LC-MS प्रमाणित)",
+    treatiseRef: "Sushruta Samhita, Sutra Sthana (Eladi Gana & Trikatu Formulation)",
+    treatiseRefHi: "सुश्रुत संहिता, सूत्र स्थान (एलादि गण एवं त्रिकटु योग)",
+    exportPremium: "+40% to +60% EU Protected GI Premium",
+    exportPremiumHi: "+40% से +60% यूरोपीय संघ संरक्षित जीआई प्रीमियम",
+    fpoAssociation: "Uttarakhand Organic Commodity Board & Kumaon FPO Collective",
+    fpoAssociationHi: "उत्तराखंड जैविक उत्पाद बोर्ड एवं कुमाऊं एफपीओ समूह"
+  },
+  northeast: {
+    title: "Brahmaputra & Eastern Himalayan Hub",
+    titleHi: "ब्रह्मपुत्र एवं पूर्वी हिमालय केंद्र",
+    state: "Assam, Meghalaya & Arunachal Pradesh",
+    stateHi: "असम, मेघालय एवं अरुणाचल प्रदेश",
+    regNo: "GI Reg. #435, #550 & #562",
+    color: "#a855f7",
+    items: [
+      { name: "Karbi Anglong Ginger", icon: "🫚" },
+      { name: "Boka Chaul (Soft Mud Rice)", icon: "🌾" },
+      { name: "Joha Aromatic Rice", icon: "🍚" },
+      { name: "Assam Kaji Nemu (Medicinal Lemon)", icon: "🍋" }
+    ],
+    itemsHi: [
+      { name: "कार्बी आंगलोंग अदरक (Sunthi)", icon: "🫚" },
+      { name: "बोका चाउल (बिना पकाए खाने योग्य चावल)", icon: "🌾" },
+      { name: "जोहा सुगंधित चावल", icon: "🍚" },
+      { name: "असम काजी नेमु (औषधीय नींबू)", icon: "🍋" }
+    ],
+    statute: "GI Act 1999 (§ 28 Exclusive Right to Trade Dress & ABS Benefit Sharing with local Karbi communities).",
+    statuteHi: "जीआई अधिनियम 1999 (धारा 28 व्यापार स्वरूप का अनन्य अधिकार एवं स्थानीय कार्बी समुदायों के साथ ABS लाभ साझाकरण)।",
+    commercial: "Exceptional gingerol oleoresin concentration (up to 35% higher than mainland plains ginger).",
+    commercialHi: "असाधारण जिंजरोल एकाग्रता (मैदानी अदरक की तुलना में 35% अधिक बायो-एक्टिव)।",
+    ayush: "Optimal raw botanical for Sunthi preparations and Ayurvedic Aahar digestive tonics; verified indigenous sourcing.",
+    ayushHi: "सोंठ (Sunthi) निर्माण और आयुर्वेद आहार पाचक टॉनिक के लिए सर्वोत्तम जैविक सामग्री।",
+    phytochemMarker: "6-Gingerol (≥1.8%), 6-Shogaol, Curcumin (HPLC peak separation)",
+    phytochemMarkerHi: "6-जिंजरोल (≥1.8%), 6-शोगाओल, करक्यूमिन (HPLC पीक पृथक्करण)",
+    treatiseRef: "Ashtanga Hridaya, Sutra Sthana Ch. 6 (Sunthi deepana/pachana pharmacokinetics)",
+    treatiseRefHi: "अष्टांग हृदय, सूत्र स्थान अ. 6 (शुंठी दीपन/पाचन भेषजगुण विज्ञान)",
+    exportPremium: "+45% to +65% High Oleoresin Organic Premium",
+    exportPremiumHi: "+45% से +65% उच्च ओलियोरेसिन जैविक निर्यात सूचकांक",
+    fpoAssociation: "Karbi Anglong Ginger Producers Cooperative Society Ltd.",
+    fpoAssociationHi: "कार्बी आंगलोंग अदरक उत्पादक सहकारी समिति लिमिटेड"
+  },
+  west: {
+    title: "Konkan Coast & Western Bio-Zone",
+    titleHi: "कोंकण तट एवं पश्चिमी जैव क्षेत्र",
+    state: "Maharashtra & Goa",
+    stateHi: "महाराष्ट्र एवं गोवा",
+    regNo: "GI Reg. #243 & #170",
+    color: "#ec4899",
+    items: [
+      { name: "Konkan Kokum (Garcinia indica)", icon: "🥥" },
+      { name: "Sindhudurg Mango (Alphonso)", icon: "🥭" },
+      { name: "Goan Khaje (Ayurvedic Sweet)", icon: "🍯" },
+      { name: "Vengurla Cashew", icon: "🥜" }
+    ],
+    itemsHi: [
+      { name: "कोंकण कोकम (Garcinia indica)", icon: "🥥" },
+      { name: "सिंधुदुर्ग हापुस आम", icon: "🥭" },
+      { name: "गोवा खाजे (पारंपरिक मिष्ठान्न)", icon: "🍯" },
+      { name: "वेंगुर्ला काजू", icon: "🥜" }
+    ],
+    statute: "GI Act 1999 (§ 20 Bar on Generic Trademark Claims).",
+    statuteHi: "जीआई अधिनियम 1999 (धारा 20 जेनेरिक ट्रेडमार्क दावों पर रोक)।",
+    commercial: "Hydroxycitric acid (HCA) rich bio-fractions for metabolic formulations and lipid management nutraceuticals.",
+    commercialHi: "हाइड्रॉक्सीसिट्रिक एसिड (HCA) युक्त बायो-अंश, जो मेटाबॉलिक और लिपिड प्रबंधन योगों के लिए अत्यधिक मूल्यवान हैं।",
+    ayush: "Documented Vrikshamla in Sushruta Samhita for Hridya (cardiac) and Deepana (digestive) tonics.",
+    ayushHi: "सुश्रुत संहिता में हृद्य (हृदय अनुकूल) और दीपन (पाचन वर्धक) योगों के रूप में उल्लिखित वृक्षाम्ल।",
+    phytochemMarker: "(-)-Hydroxycitric Acid / HCA (≥12%), Garcinol, Anthocyanins",
+    phytochemMarkerHi: "(-)-हाइड्रॉक्सीसिट्रिक एसिड / HCA (≥12%), गार्सिनॉल, एंथोसायनिन",
+    treatiseRef: "Sushruta Samhita & Bhavaprakasha Nighantu (Vrikshamla for Hridya action)",
+    treatiseRefHi: "सुश्रुत संहिता एवं भावप्रकाश निघंटु (हृद्य कर्म हेतु वृक्षाम्ल)",
+    exportPremium: "+40% to +55% Nutraceutical Metabolic Premium",
+    exportPremiumHi: "+40% से +55% न्यूट्रास्युटिकल वसा-चयापचय प्रीमियम ग्रेड",
+    fpoAssociation: "Sindhudurg District Fruit & Herbal Processing Society (Konkan)",
+    fpoAssociationHi: "सिंधुदुर्ग जिला फल एवं औषधीय प्रसंस्करण संघ (कोंकण)"
+  },
+  karnataka: {
+    title: "Deccan & Mysore Plateau Hub",
+    titleHi: "दक्कन एवं मैसूर पठार केंद्र",
+    state: "Karnataka & Coorg",
+    stateHi: "कर्नाटक एवं कूर्ग",
+    regNo: "GI Reg. #29, #109 & #112",
+    color: "#eab308",
+    items: [
+      { name: "Mysore Sandalwood Oil (Santalum album)", icon: "🪵" },
+      { name: "Coorg Green Cardamom", icon: "🌿" },
+      { name: "Mysore Betel Leaf (Paan)", icon: "🍃" },
+      { name: "Nanjanagud Banana", icon: "🍌" }
+    ],
+    itemsHi: [
+      { name: "मैसूर चंदन तेल (Santalum album)", icon: "🪵" },
+      { name: "कूर्ग हरी इलायची", icon: "🌿" },
+      { name: "मैसूर पान का पत्ता", icon: "🍃" },
+      { name: "नंजनगुड केला", icon: "🍌" }
+    ],
+    statute: "GI Act 1999 (§ 67 Criminal Penalties for Falsification of GI Goods).",
+    statuteHi: "जीआई अधिनियम 1999 (धारा 67 जीआई वस्तुओं की नकल/धोखाधड़ी पर आपराधिक दंड)।",
+    commercial: "Highest santalol isomer concentration worldwide (>90% α and β santalol); top luxury cosmetic and pharma grade.",
+    commercialHi: "विश्व भर में उच्चतम सांतालोल सांद्रता (>90% α एवं β सांतालोल); फार्मास्युटिकल व लक्जरी ग्रेड।",
+    ayush: "Classical Chandana taila preparations; strict Forest Department & SBB custody chain compliance protects formulation integrity.",
+    ayushHi: "शास्त्रीय चन्दन तैल निर्माण; वन विभाग एवं राज्य जैव विविधता बोर्ड की वैध श्रृंखला गुणवत्ता की गारंटी देती है।",
+    phytochemMarker: "α-Santalol (≥55%) & β-Santalol (≥35%) [Total Santalol ≥90% by GC-FID]",
+    phytochemMarkerHi: "α-सांतालोल (≥55%) एवं β-सांतालोल (≥35%) [कुल सांतालोल ≥90% GC-FID]",
+    treatiseRef: "Charaka Samhita, Sutra Sthana (Shvitrahara & Dahaprashamana Gana)",
+    treatiseRefHi: "चरक संहिता, सूत्र स्थान (श्वित्रहर एवं दाहप्रशमन गण)",
+    exportPremium: "+70% to +110% Luxury Pharma & Cosmetic Benchmark",
+    exportPremiumHi: "+70% से +110% फार्मास्युटिकल व लक्जरी वैश्विक मानक",
+    fpoAssociation: "Karnataka Soaps & Detergents Ltd (KSDL) / Mysore Artisans Guild",
+    fpoAssociationHi: "कर्नाटक सोप्स एंड डिटर्जेंट्स लिमिटेड (मैसूर)"
+  },
+  kerala: {
+    title: "Malabar & Western Ghats Biodiverse Hub",
+    titleHi: "मालाबार एवं पश्चिमी घाट जैव-विविधता केंद्र",
+    state: "Kerala (Alleppey, Wayanad, Palakkad)",
+    stateHi: "केरल (अलेप्पी, वायनाड, पालक्काड)",
+    regNo: "GI Reg. #67, #77, #79 & #80",
+    color: "#10b981",
+    items: [
+      { name: "Alleppey Green Cardamom", icon: "🌿" },
+      { name: "Malabar Pepper (Piper nigrum)", icon: "🫑" },
+      { name: "Navara Rice (Shashtika Shali)", icon: "🌾" },
+      { name: "Pokkali Saltwater Rice", icon: "🍚" }
+    ],
+    itemsHi: [
+      { name: "अलेप्पी हरी इलायची", icon: "🌿" },
+      { name: "मालाबार काली मिर्च (मरिच)", icon: "🫑" },
+      { name: "नवरा चावल (षष्टिका शाली)", icon: "🌾" },
+      { name: "पोक्काली लवण-प्रतिरोधी चावल", icon: "🍚" }
+    ],
+    statute: "GI Act 1999 (§ 21) + Biological Diversity Act 2002 (Kerala SBB ABS Regulations).",
+    statuteHi: "जीआई अधिनियम 1999 (धारा 21) + जैव विविधता अधिनियम 2002 (केरल SBB लाभ साझाकरण नियम)।",
+    commercial: "Navara rice commands ₹500-900/kg in medical tourism spas and Panchakarma wellness resorts worldwide.",
+    commercialHi: "नवरा चावल वैश्विक मेडिकल टूरिज्म और पंचकर्म केंद्रों में ₹500-900/किग्रा का प्रीमियम मूल्य प्राप्त करता है।",
+    ayush: "Integral to Navarakizhi rejuvenation therapy; Section 3(p) patent bar is bypassed by deploying certified GI collective licensing.",
+    ayushHi: "नवरकिझि कायाकल्प पंचकर्म चिकित्सा का मुख्य आधार; प्रमाणित जीआई टैग से पेटेंट धारा 3(p) की बाधा हल होती है।",
+    phytochemMarker: "1,8-Cineole & Terpinyl acetate (Alleppey), Shashtika Flavonoids (Navara)",
+    phytochemMarkerHi: "1,8-सिनियोल एवं टरपिनिल एसीटेट (अलेप्पी), षष्टिका फ्लेवोनोइड्स (नवरा)",
+    treatiseRef: "Charaka Samhita, Chikitsa Sthana Ch. 1 (Shashtika Shali in Rejuvenation)",
+    treatiseRefHi: "चरक संहिता, चिकित्सा स्थान अ. 1 (रसायन कर्म में षष्टिका शाली)",
+    exportPremium: "+50% to +80% Global Panchakarma Export Value",
+    exportPremiumHi: "+50% से +80% वैश्विक पंचकर्म एवं मेडिकल टूरिज्म मूल्य",
+    fpoAssociation: "Navara Eco-Farm & Kerala Ayurvedic Co-operative Society",
+    fpoAssociationHi: "नवरा इको-फार्म एवं केरल आयुर्वेदिक सहकारी समिति"
+  }
+};
+
+let currentGiHub = 'kashmir';
+
+function selectGiHub(hubId) {
+  const hub = GI_HUBS[hubId];
+  if (!hub) return;
+  currentGiHub = hubId;
+
+  // Update SVG pins
+  document.querySelectorAll('.gi-pin').forEach(pin => pin.classList.remove('active'));
+  const activePin = $(`pin-${hubId}`);
+  if (activePin) activePin.classList.add('active');
+
+  // Update selector pills
+  document.querySelectorAll('.gi-pill-btn').forEach(btn => btn.classList.remove('active'));
+  const activeBtn = $(`btn-gi-${hubId}`);
+  if (activeBtn) activeBtn.classList.add('active');
+
+  // Render info card
+  const isHi = currentLang === 'hi';
+  $('gi-hub-title').textContent = isHi ? hub.titleHi : hub.title;
+  $('gi-hub-state').textContent = isHi ? hub.stateHi : hub.state;
+  $('gi-tag-reg').textContent = hub.regNo;
+  $('gi-tag-reg').style.color = hub.color;
+
+  const items = isHi ? hub.itemsHi : hub.items;
+  $('gi-items-list').innerHTML = items.map(it =>
+    `<span class="gi-item-pill">${it.icon} ${it.name}</span>`
+  ).join('');
+
+  $('gi-statute-text').textContent = isHi ? hub.statuteHi : hub.statute;
+  $('gi-commercial-text').textContent = isHi ? hub.commercialHi : hub.commercial;
+  $('gi-ayush-text').textContent = isHi ? hub.ayushHi : hub.ayush;
+
+  // Render deep dossier metrics
+  $('gi-marker-text').textContent = isHi ? (hub.phytochemMarkerHi || hub.phytochemMarker) : hub.phytochemMarker;
+  $('gi-treatise-text').textContent = isHi ? (hub.treatiseRefHi || hub.treatiseRef) : hub.treatiseRef;
+  $('gi-multiplier-text').textContent = isHi ? (hub.exportPremiumHi || hub.exportPremium) : hub.exportPremium;
+  $('gi-fpo-text').textContent = isHi ? (hub.fpoAssociationHi || hub.fpoAssociation) : hub.fpoAssociation;
+
+  // Flash highlight effect on card
+  const card = document.querySelector('.gi-info-card');
+  if (card) {
+    card.classList.remove('gi-card-active');
+    void card.offsetWidth;
+    card.classList.add('gi-card-active');
+  }
+}
+
+const SCENARIO_GI_MAP = {
+  'Classical': {
+    hub: 'kerala',
+    badgeEn: 'PRIMARY IP MONOPOLY (§ 21)',
+    badgeHi: 'प्राथमिक विधिक एकाधिकार (धारा 21)',
+    borderColor: 'rgba(16, 185, 129, 0.45)',
+    bg: 'rgba(16, 185, 129, 0.08)',
+    leadEn: '💡 Classical IP Alternative (Bypassing Section 3p Bar):',
+    leadHi: '💡 शास्त्रीय योग विधिक विकल्प (धारा 3p बाधा का समाधान):',
+    textEn: 'Classical formulations are strictly barred from patenting under Section 3(p) as Traditional Knowledge. However, the <strong>Geographical Indications of Goods Act, 1999 (§ 21 & § 23)</strong> provides perpetual legal territorial monopolies, registered collective producer protection, and commands <strong>+45% to +75% export price premiums</strong> via authentic QR/hologram certification.',
+    textHi: 'शास्त्रीय योग पेटेंट्स अधिनियम की धारा 3(p) के तहत पारंपरिक ज्ञान होने के कारण पेटेंट नहीं हो सकते। हालांकि, <strong>भौगोलिक उपदर्शन (GI) अधिनियम, 1999 (धारा 21 एवं 23)</strong> विधिक क्षेत्रीय एकाधिकार, सामूहिक ट्रेड ड्रेस और आधिकारिक क्यूआर/होलोग्राम से <strong>45-75% निर्यात मूल्य प्रीमियम</strong> प्रदान करता है।'
+  },
+  'Phytopharmaceutical': {
+    hub: 'kashmir',
+    badgeEn: 'STANDARDIZED BOTANICAL PROVENANCE (GSR 918E)',
+    badgeHi: 'प्रमाणित वानस्पतिक स्रोत एवं बायो-मार्कर एकरूपता',
+    borderColor: 'rgba(99, 102, 241, 0.45)',
+    bg: 'rgba(99, 102, 241, 0.08)',
+    leadEn: '🔬 Phytopharmaceutical Batch-to-Batch Reproducibility:',
+    leadHi: '🔬 फाइटोफार्मास्युटिकल बैच-दर-बैच रासायनिक एकरूपता:',
+    textEn: 'Under <strong>GSR 918(E) and New Drugs & Clinical Trials Rules 2019</strong>, phytopharmaceutical regulatory approval demands a minimum of 4 HPLC bioactive marker fingerprints and strict chemical stability. Sourcing from certified GI agro-climatic zones eliminates batch-to-batch variation (e.g. Saffron crocin ≥16%, Tejpatta cinnamic aldehyde ≥65%), satisfying CDSCO clinical reproducibility mandates and clearing Section 3(d) therapeutic efficacy hurdles.',
+    textHi: '<strong>GSR 918(E) एवं न्यू ड्रग्स व क्लीनिकल ट्रायल नियम 2019</strong> के तहत फाइटोफार्मा दवाओं के लिए न्यूनतम 4 HPLC बायो-मार्करों की रासायनिक स्थिरता और बैच-दर-बैच एकरूपता अनिवार्य है। प्रमाणित जीआई कृषि-जलवायु क्षेत्रों से प्राप्त कच्ची सामग्री रासायनिक विचलन (जैसे केसर क्रोसिन ≥16%) को समाप्त करती है और CDSCO अनुमोदन एवं धारा 3(d) प्रभावकारिता मानकों को पूरा करती है।'
+  },
+  'Patent&Proprietary': {
+    hub: 'karnataka',
+    badgeEn: 'SOVEREIGN BIO-RESOURCE TRACEABILITY (BDA § 6)',
+    badgeHi: 'जैव संपदा स्रोत सत्यापन एवं एनबीए फॉर्म 3 मंजूरी',
+    borderColor: 'rgba(56, 189, 248, 0.45)',
+    bg: 'rgba(56, 189, 248, 0.08)',
+    leadEn: '⚖️ Biodiversity Act Section 6 Compliance & Form 3 Clearance:',
+    leadHi: '⚖️ जैव विविधता अधिनियम धारा 6 अनुपालन एवं फॉर्म 3 अनापत्ति:',
+    textEn: 'Patents utilizing Indian biological resources require mandatory <strong>prior approval from the National Biodiversity Authority (NBA Form 3) under Section 6 of the Biological Diversity Act, 2002</strong>. Sourcing certified GI botanicals establishes an unbroken State Biodiversity Board (SBB) origin trail, expediting Form 3 approval, satisfying Rule 18 ABS benefit-sharing requirements, and precluding patent revocation under Patents Act § 64(1)(p).',
+    textHi: 'भारतीय जैविक संपदा पर आधारित पेटेंट आवेदनों हेतु <strong>जैव विविधता अधिनियम 2002 की धारा 6 के तहत एनबीए (NBA) फॉर्म 3 पूर्व-अनुमोदन अनिवार्य है</strong>। प्रमाणित जीआई घटकों का उपयोग राज्य जैव विविधता बोर्ड (SBB) की प्रामाणिक आपूर्ति श्रृंखला स्थापित करता है, जिससे फॉर्म 3 की मंजूरी शीघ्र मिलती है और पेटेंट निरस्तीकरण (धारा 64(1)(p)) का जोखिम समाप्त होता है।'
+  },
+  'Aahar': {
+    hub: 'northeast',
+    badgeEn: 'FSSAI REG. 5 AUTHENTICITY & TRADE DRESS',
+    badgeHi: 'FSSAI नियम 5 प्रामाणिक स्रोत पुष्टि एवं ट्रेड ड्रेस',
+    borderColor: 'rgba(245, 158, 11, 0.45)',
+    bg: 'rgba(245, 158, 11, 0.08)',
+    leadEn: '🥗 Ayurvedic Aahar Functional Food Authenticity:',
+    leadHi: '🥗 आयुर्वेद आहार कार्यात्मक खाद्य प्रामाणिकता:',
+    textEn: 'Under <strong>FSSAI (Ayurvedic Aahar) Regulations, 2022 (Regulations 5 & 8)</strong>, functional food products cannot make medicinal disease-cure claims, making indigenous provenance their primary brand differentiator. Registered GI credentials provide statutory substantiation of classical nutritional heritage under Schedule A, shields the product from regulatory food adulteration inquiries, and creates enforceable collective trade dress protection under GI Act § 28 in the ₹30,000+ Cr market.',
+    textHi: '<strong>FSSAI (आयुर्वेद आहार) विनियम 2022 (विनियम 5 एवं 8)</strong> के अनुसार स्वास्थ्य खाद्य पदार्थों में औषधीय बीमारी-उपचार के दावे वर्जित हैं, जिससे स्वदेशी भौगोलिक पहचान ही मुख्य ब्रांड आधार बनती है। पंजीकृत जीआई स्थिति अनुसूची क के तहत शास्त्रीय पोषण विरासत को विधिक रूप से सिद्ध करती है, नियामक खाद्य जांच से बचाती है और ₹30,000+ करोड़ के बाजार में धारा 28 के तहत स्थायी ट्रेड ड्रेस सुरक्षा देती है।'
+  },
+  'Ambiguous': {
+    hub: 'west',
+    badgeEn: 'PRE-FILING BIOPIRACY & FTO DEFENSIVE AUDIT',
+    badgeHi: 'दाखिल-पूर्व बायो-पायरेसी जांच एवं विधिक स्वतंत्रता (FTO)',
+    borderColor: 'rgba(248, 113, 113, 0.45)',
+    bg: 'rgba(248, 113, 113, 0.08)',
+    leadEn: '🔍 Pre-Filing Biopiracy Risk & Freedom-to-Operate Audit:',
+    leadHi: '🔍 दाखिल-पूर्व बायो-पायरेसी जोखिम एवं विधिक स्वतंत्रता (FTO) ऑडिट:',
+    textEn: 'When formulation boundaries or extraction parameters are undefined, filing broad patent claims risks infringing indigenous community GI rights or triggering pre-grant oppositions from TKDL. Screening the formulation against the National GI Strategic Registry provides <strong>defensive Freedom-to-Operate (FTO) clearance</strong>, prevents criminal counterfeiting liability under GI Act § 67, and establishes clear scientific boundaries before submitting patent claims.',
+    textHi: 'जब फॉर्मूलेशन अनुपात या निष्कर्षण विधियां अस्पष्ट हों, तो पेटेंट आवेदन दायर करने से पारंपरिक समुदायों के जीआई अधिकारों के उल्लंघन या TKDL पूर्व-अनुदान विरोध का गंभीर जोखिम रहता है। राष्ट्रीय जीआई रणनीतिक रजिस्ट्री से मिलान <strong>विधिक स्वतंत्रता (FTO) अनापत्ति</strong> प्रदान करता है, धारा 67 के तहत आपराधिक दंड से बचाता है और पेटेंट दावे दाखिल करने से पूर्व सटीक विधिक सीमाएं तय करता है।'
+  }
+};
+
+let currentGiClassification = 'Classical';
+
+function renderGiBlock(classification) {
+  const isHi = currentLang === 'hi';
+  currentGiClassification = classification || 'Classical';
+  const cfg = SCENARIO_GI_MAP[currentGiClassification] || SCENARIO_GI_MAP['Classical'];
+
+  const callout = $('gi-callout');
+  if (callout) {
+    callout.style.borderColor = cfg.borderColor;
+    callout.style.background = cfg.bg;
+  }
+  const leadEl = $('gi-callout-lead');
+  if (leadEl) leadEl.textContent = isHi ? cfg.leadHi : cfg.leadEn;
+  
+  const textEl = $('gi-callout-text');
+  if (textEl) textEl.innerHTML = isHi ? cfg.textHi : cfg.textEn;
+
+  const badgeEl = $('gi-header-badge');
+  if (badgeEl) {
+    badgeEl.textContent = isHi ? cfg.badgeHi : cfg.badgeEn;
+    badgeEl.style.borderColor = cfg.borderColor;
+    badgeEl.style.background = cfg.bg;
+  }
+
+  // Auto-select the tailored regional hub for this scenario
+  selectGiHub(cfg.hub);
+}
+
+// ── Bilingual Language Switcher ──────────────────────────────────────────
+const I18N = {
+  en: {
+    badge_sih: "SIH26045 · Proof of Concept",
+    quick_scenarios: "Quick Scenarios",
+    btn_classical: "🌿 Classical",
+    btn_phytopharma: "🧪 Phytopharma",
+    btn_aahar: "🥗 Aahar",
+    btn_patent_prop: "🔬 Patent & Prop.",
+    btn_ambiguous: "❓ Ambiguous",
+    btn_bad_citation: "⚡ Demo: Hallucination Catch",
+    btn_quick_nba: "Instant NBA Form 3 Draft →",
+    label_ingredients: "Ingredients",
+    hint_ingredients: "Comma-separated",
+    label_extraction: "Extraction / Process",
+    label_intended_use: "Intended Use",
+    label_claims: "Claims Text",
+    label_jurisdiction: "Jurisdiction",
+    opt_in: "India (IN)",
+    opt_intl: "India + International",
+    btn_analyze: "Analyze Formulation →",
+    empty_title: "Ready to Analyze",
+    empty_desc: "Select a demo scenario or enter a custom formulation to run the citation-verified IP pipeline.",
+    pipeline_title: "Pipeline Execution",
+    conf_label: "Confidence Score",
+    radar_caption: "IP Readiness & Risk Posture",
+    roadmap_title: "IP Strategy Roadmap",
+    btn_nba_doc: "Generate Pre-filled Official NBA Form 3 Draft →",
+    disclaimer_note: "ℹ️ Informational only — not legal advice. All claims above are verified against retrieved statutory text. For formal IP proceedings, consult a registered patent agent.",
+    gi_title: "AYUSH Geographical Indications (GI) Strategic Registry",
+    gi_subtitle: "Monopoly alternative under GI Act 1999 for non-patentable Classical formulations & indigenous botanicals",
+    gi_badge: "GI ACT 1999 REPOSITORY",
+    gi_notice_lead: "💡 Strategic Legal Alternative:",
+    gi_notice: "Classical formulations are barred from standard patenting per Section 3(p). However, the Geographical Indications of Goods Act, 1999 provides legally enforceable territorial monopolies, community trade dress, and 40-70% export price premiums.",
+    gi_map_hint: "Click any regional pin or button below",
+    gi_col_items: "🌿 Certified Bio-Resources & Formulations",
+    gi_col_statute: "⚖️ Statutory Protection",
+    gi_col_comm: "💰 Commercial Advantage",
+    gi_col_ayush: "📜 AYUSH Classical Linkage & ABS Compliance",
+    lbl_statutory_barrier: "Primary Statutory Barrier",
+    lbl_filing_readiness: "Filing Readiness Index",
+    lbl_core_remedy: "Core Legal Remedy",
+    p1_title: "Legal Audit & Prior Art",
+    p1_sub: "TKDL & § 3(p) clearance",
+    p2_title: "Technical & Clinical",
+    p2_sub: "Synergy / IND assays",
+    p3_title: "Statutory Filings",
+    p3_sub: "Form 3 NBA & IPO specs",
+    p4_title: "Monopoly & Enforcement",
+    p4_sub: "GI / Class 5 / Form 25D",
+    lbl_step_gov: "Governing Authority",
+    lbl_step_deliv: "Official Deliverable",
+    gi_matrix_title: "Strategic Decision Matrix: Patents Act 1970 vs GI Act 1999",
+    gi_th_dim: "Legal Dimension",
+    gi_th_patent: "Patents Act, 1970 (Standard IP)",
+    gi_th_gi: "GI Act, 1999 (Sui Generis IP)",
+    gi_dim1_title: "Classical Formulation Eligibility",
+    gi_dim1_pat: "❌ Strictly Barred under Section 3(p) as Traditional Knowledge; anticipated by TKDL citations.",
+    gi_dim1_gi: "✅ Fully Protected under Section 2(e) & Section 21 for registered producers in certified agro-climatic zones.",
+    gi_dim2_title: "Protection Lifespan & Renewal",
+    gi_dim2_pat: "⚠️ 20-Year Cap: Inventions enter public domain at year 21 with zero commercial exclusivity remaining.",
+    gi_dim2_gi: "♾️ Indefinite / Perpetual: Renewable every 10 years indefinitely, creating a permanent generational asset.",
+    gi_dim3_title: "Global Export Value Realization",
+    gi_dim3_pat: "📉 Generic Commodity: Exposed to low-cost chemical substitutes and downward price erosion.",
+    gi_dim3_gi: "📈 +45% to +75% Price Multiplier: Authentic provenance QR/hologram commands premium export valuation.",
+    gi_dim4_title: "Ownership & Licensing Model",
+    gi_dim4_pat: "🏢 Single Corporate Entity (Assignee); vulnerable to post-grant oppositions by competitor cartels.",
+    gi_dim4_gi: "🤝 Collective Community Monopoly: Co-owned by Registered Association + individual authorized user licenses.",
+    gi_dim5_title: "Infringement Remedy & Enforcement",
+    gi_dim5_pat: "⚖️ Lengthy Civil Injunctions & high evidentiary burden of proving infringement in court.",
+    gi_dim5_gi: "🚔 Criminal Penalties (§ 67: 6 months to 3 yrs imprisonment) + Customs border seizure under IP Rules.",
+    gi_lbl_marker: "Phytochemical Marker (HPLC)",
+    gi_lbl_treatise: "Classical Treatise Reference",
+    gi_lbl_premium: "Export Price Multiplier",
+    gi_lbl_fpo: "Authorized Producer Association",
+    beacon_status: "GATEKEEPER ACTIVE",
+    lbl_quick_add: "Quick Add:",
+    filter_all: "All Steps",
+    filter_risk: "High Risk / Blockers",
+    btn_copy_strategy: "Copy Strategy",
+    btn_export_pdf: "Export PDF",
+    btn_copy_short: "Copy",
+    toast_strategy_copied: "Complete IP Strategy copied to clipboard!",
+    toast_deliv_copied: "Deliverable title copied to clipboard!",
+  },
+  hi: {
+    badge_sih: "स्मार्ट इंडिया हैकाथॉन · SIH26045",
+    quick_scenarios: "त्वरित परिदृश्य (डेमो)",
+    btn_classical: "🌿 शास्त्रीय योग",
+    btn_phytopharma: "🧪 फाइटोफार्मा",
+    btn_aahar: "🥗 आयुर्वेद आहार",
+    btn_patent_prop: "🔬 पेटेंट एवं प्रोप्राइटरी",
+    btn_ambiguous: "❓ अस्पष्ट / संशयपूर्ण",
+    btn_bad_citation: "⚡ भ्रांति पहचान डेमो",
+    btn_quick_nba: "एनबीए फॉर्म 3 तुरंत देखें →",
+    label_ingredients: "सक्रिय घटक (सामग्री)",
+    hint_ingredients: "अल्पविराम (comma) से अलग करें",
+    label_extraction: "निष्कर्षण एवं निर्माण विधि",
+    label_intended_use: "उपयोग एवं स्वास्थ्य लाभ",
+    label_claims: "पेटेंट दावे / फॉर्मूलेशन विवरण",
+    label_jurisdiction: "अधिकार क्षेत्र (Jurisdiction)",
+    opt_in: "भारत (India - IN)",
+    opt_intl: "भारत + अंतर्राष्ट्रीय (PCT)",
+    btn_analyze: "फॉर्मूलेशन का कानूनी विश्लेषण करें →",
+    empty_title: "विश्लेषण के लिए तैयार",
+    empty_desc: "कानूनी सत्यापन पाइपलाइन चलाने के लिए एक परिदृश्य चुनें या अपना फॉर्मूलेशन दर्ज करें।",
+    pipeline_title: "पाइपलाइन निष्पादन प्रगति",
+    conf_label: "विश्वसनीयता स्कोर (Confidence)",
+    radar_caption: "बौद्धिक संपदा जोखिम एवं तत्परता रडार",
+    roadmap_title: "रणनीतिक बौद्धिक संपदा रोडमैप",
+    btn_nba_doc: "एनबीए (NBA) फॉर्म 3 आधिकारिक मसौदा डाउनलोड करें →",
+    disclaimer_note: "ℹ️ केवल सूचनात्मक उद्देश्य हेतु — औपचारिक विधिक सलाह नहीं। सभी दावे संहिताबद्ध विधिक धाराओं से सत्यापित हैं।",
+    gi_title: "आयुष भौगोलिक उपदर्शन (GI) रणनीतिक रजिस्ट्री",
+    gi_subtitle: "धारा 3(p) के तहत गैर-पेटेंट योग्य शास्त्रीय योगों के लिए GI अधिनियम 1999 के अंतर्गत कानूनी एकाधिकार",
+    gi_badge: "जीआई अधिनियम 1999 भंडार",
+    gi_notice_lead: "💡 रणनीतिक विधिक विकल्प:",
+    gi_notice: "शास्त्रीय योग पेटेंट्स अधिनियम की धारा 3(p) के तहत पेटेंट नहीं हो सकते। हालांकि, भौगोलिक उपदर्शन (GI) अधिनियम 1999 कानूनी क्षेत्रीय एकाधिकार और 40-70% निर्यात मूल्य प्रीमियम प्रदान करता है।",
+    gi_map_hint: "किसी भी क्षेत्रीय पिन या नीचे दिए गए बटन पर क्लिक करें",
+    gi_col_items: "🌿 प्रमाणित जैविक संपदा एवं योग",
+    gi_col_statute: "⚖️ विधिक संरक्षण (Statutory Protection)",
+    gi_col_comm: "💰 व्यावसायिक एवं निर्यात लाभ",
+    gi_col_ayush: "📜 आयुष शास्त्रीय सम्बद्धता एवं एबीएस अनुपालन",
+    lbl_statutory_barrier: "प्राथमिक विधिक बाधा",
+    lbl_filing_readiness: "दाखिल तत्परता सूचकांक",
+    lbl_core_remedy: "मुख्य विधिक उपाय / संरक्षण",
+    p1_title: "विधिक ऑडिट एवं पूर्व-कला",
+    p1_sub: "TKDL एवं धारा 3(p) जांच",
+    p2_title: "तकनीकी एवं नैदानिक",
+    p2_sub: "सिनर्जी / आईएनडी विश्लेषण",
+    p3_title: "वैधानिक आवेदन",
+    p3_sub: "एनबीए फॉर्म 3 एवं आईपीओ पेटेंट",
+    p4_title: "एकाधिकार एवं प्रवर्तन",
+    p4_sub: "जीआई / वर्ग 5 / फॉर्म 25D",
+    lbl_step_gov: "शासी प्राधिकरण",
+    lbl_step_deliv: "आधिकारिक दस्तावेज / प्रपत्र",
+    gi_matrix_title: "रणनीतिक निर्णय मैट्रिक्स: पेटेंट्स अधिनियम 1970 बनाम जीआई अधिनियम 1999",
+    gi_th_dim: "विधिक आयाम (Dimension)",
+    gi_th_patent: "पेटेंट्स अधिनियम, 1970 (मानक आईपी)",
+    gi_th_gi: "भौगोलिक उपदर्शन अधिनियम, 1999",
+    gi_dim1_title: "शास्त्रीय योग पात्रता",
+    gi_dim1_pat: "❌ धारा 3(p) के तहत पारंपरिक ज्ञान के रूप में पूर्णतः वर्जित; TKDL उद्धरणों द्वारा प्रत्यक्ष रूप से खंडित।",
+    gi_dim1_gi: "✅ धारा 2(e) एवं धारा 21 के तहत प्रमाणित कृषि-जलवायु क्षेत्रों में पंजीकृत उत्पादकों हेतु पूर्ण संरक्षित।",
+    gi_dim2_title: "संरक्षण अवधि एवं नवीनीकरण",
+    gi_dim2_pat: "⚠️ 20 वर्ष की सीमा: 21वें वर्ष में पेटेंट सार्वजनिक डोमेन में आ जाता है और व्यावसायिक एकाधिकार समाप्त हो जाता है।",
+    gi_dim2_gi: "♾️ स्थायी / निरंतर: प्रत्येक 10 वर्ष में असीमित नवीनीकरण, जिससे पीढ़ी-दर-पीढ़ी स्थायी संपत्ति बनती है।",
+    gi_dim3_title: "वैश्विक निर्यात मूल्य वृद्धि",
+    gi_dim3_pat: "📉 जेनेरिक वस्तु: सस्ते रासायनिक विकल्पों से मूल्य गिरावट का निरंतर जोखिम।",
+    gi_dim3_gi: "📈 +45% से +75% मूल्य वृद्धि: प्रामाणिक उत्पत्ति क्यूआर/होलोग्राम से वैश्विक बाजार में प्रीमियम मूल्य।",
+    gi_dim4_title: "स्वामित्व एवं लाइसेंसिंग मॉडल",
+    gi_dim4_pat: "🏢 एकल कॉर्पोरेट इकाई (असाइनर); प्रतिस्पर्धी कंपनियों के विरोध के प्रति संवेदनशील।",
+    gi_dim4_gi: "🤝 सामूहिक सामुदायिक एकाधिकार: पंजीकृत संघ + व्यक्तिगत अधिकृत उपयोगकर्ताओं द्वारा सह-स्वामित्व।",
+    gi_dim5_title: "उल्लंघन निवारण एवं प्रवर्तन",
+    gi_dim5_pat: "⚖️ न्यायालय में लंबी दीवानी प्रक्रिया एवं उल्लंघन सिद्ध करने का भारी भार।",
+    gi_dim5_gi: "🚔 आपराधिक दंड (धारा 67: 6 माह से 3 वर्ष कारावास) + सीमा शुल्क (कस्टम्स) द्वारा तत्काल जब्ती।",
+    gi_lbl_marker: "बायो-मार्कर प्रोफाइल (HPLC)",
+    gi_lbl_treatise: "शास्त्रीय संहिता संदर्भ",
+    gi_lbl_premium: "निर्यात मूल्य गुणक",
+    gi_lbl_fpo: "अधिकृत उत्पादक संघ (FPO)",
+    beacon_status: "सत्यापन गेटकीपर सक्रिय",
+    lbl_quick_add: "शीघ्र जोड़ें:",
+    filter_all: "सभी चरण",
+    filter_risk: "उच्च जोखिम / बाधाएं",
+    btn_copy_strategy: "रणनीति कॉपी करें",
+    btn_export_pdf: "पीडीएफ निर्यात",
+    btn_copy_short: "कॉपी",
+    toast_strategy_copied: "संपूर्ण आईपी रणनीति क्लिपबोर्ड पर कॉपी की गई!",
+    toast_deliv_copied: "दस्तावेज़ का नाम कॉपी किया गया!",
+  }
+};
+
+let currentLang = 'en';
+
+function setLanguage(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  $(`lang-${lang}`).classList.add('active');
+
+  const dict = I18N[lang] || I18N.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (dict[key]) {
+      el.textContent = dict[key];
+    }
+  });
+
+  // Re-sync dynamic Scenario Intelligence and GI widgets in selected language
+  if (typeof updateScenarioIntel === 'function' && currentScenarioKey) {
+    updateScenarioIntel(currentScenarioKey);
+  }
+  if (typeof renderGiBlock === 'function') {
+    renderGiBlock(currentGiClassification);
+  }
+  if (typeof selectGiHub === 'function') {
+    selectGiHub(currentGiHub);
+  }
+  if (lastCompleteData && typeof handleComplete === 'function') {
+    handleComplete(lastCompleteData);
   }
 }
 </script>
+
+<!-- NBA Form 3 Modal -->
+<div class="modal-overlay" id="nba-modal" onclick="if(event.target===this)closeNbaModal()">
+  <div class="modal-box">
+    <div class="modal-header-bar">
+      <h3>🏛️ Official NBA Form 3 — Application for IPR Clearance</h3>
+      <button class="modal-close-btn" onclick="closeNbaModal()">&times;</button>
+    </div>
+    <div class="modal-scroll-body">
+      <div class="govt-header">
+        <div class="govt-emblem">🇮🇳</div>
+        <div class="govt-title">Government of India · National Biodiversity Authority</div>
+        <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:0.5px">TICEL Bio Park, CSIR Road, Taramani, Chennai – 600 113</div>
+        <div class="form-num">FORM III</div>
+        <div class="form-rule">[See Rule 18 of the Biological Diversity Rules, 2004]</div>
+        <div class="form-desc">Application for approval of the National Biodiversity Authority for applying for Intellectual Property Right (IPR) based on research on biological resource obtained from India</div>
+      </div>
+
+      <p style="font-size:12px;margin-bottom:12px;color:#475569">
+        To,<br>
+        The Secretary,<br>
+        National Biodiversity Authority, Chennai, India.
+      </p>
+
+      <p style="font-size:12px;margin-bottom:16px">
+        Sir/Madam,<br>
+        I/We hereby apply for obtaining approval of the National Biodiversity Authority under <strong>Section 6 of the Biological Diversity Act, 2002</strong> for applying for intellectual property rights based on biological resources/knowledge obtained from India as per details given below:
+      </p>
+
+      <table class="form-table">
+        <tr>
+          <td class="col-num">1.</td>
+          <td class="col-label">Full Name &amp; Contact Details of Applicant</td>
+          <td class="col-val form-field-highlight" id="nba-applicant">AYUSH Bio-Innovator / Startup Incubatee<br><span style="font-size:11px;color:#64748b">Verified via IP-SAKTI Digital ID #SIH26045-APP-01</span></td>
+        </tr>
+        <tr>
+          <td class="col-num">2.</td>
+          <td class="col-label">Legal Status of the Applicant</td>
+          <td class="col-val">Indian Citizen / Registered Indian Entity (Section 3(2) compliant)</td>
+        </tr>
+        <tr>
+          <td class="col-num">3.</td>
+          <td class="col-label">Details of Biological Resource(s) Accessed</td>
+          <td class="col-val form-field-highlight" id="nba-bio-resources">Ashwagandha (Withania somnifera), root extract</td>
+        </tr>
+        <tr>
+          <td class="col-num">4.</td>
+          <td class="col-label">Geographical Location of Collection / Sourcing</td>
+          <td class="col-val" id="nba-geo-location">Domestic Indian cultivation, sourced under State Biodiversity Board (SBB) intimation</td>
+        </tr>
+        <tr>
+          <td class="col-num">5.</td>
+          <td class="col-label">Nature of Intellectual Property Right Applied For</td>
+          <td class="col-val form-field-highlight" id="nba-ip-type">Patent (Provisional / Complete Specification under Patents Act, 1970)</td>
+        </tr>
+        <tr>
+          <td class="col-num">6.</td>
+          <td class="col-label">Title of the Invention / Formulation Summary</td>
+          <td class="col-val form-field-highlight" id="nba-invention-title">—</td>
+        </tr>
+        <tr>
+          <td class="col-num">7.</td>
+          <td class="col-label">Extraction Process &amp; Technical Characterization</td>
+          <td class="col-val" id="nba-process-summary">—</td>
+        </tr>
+        <tr>
+          <td class="col-num">8.</td>
+          <td class="col-label">Commercialisation &amp; Benefit Sharing Commitment</td>
+          <td class="col-val">I/We undertake to enter into an Access and Benefit Sharing (ABS) agreement with the National Biodiversity Authority and agree to pay statutory royalty/fees under Biological Diversity Regulations.</td>
+        </tr>
+      </table>
+
+      <div style="margin-top:30px;display:flex;justify-content:space-between;font-size:12px;color:#334155">
+        <div>
+          <strong>Place:</strong> New Delhi / Incubator HQ<br>
+          <strong>Date:</strong> <span id="nba-today-date"></span><br>
+          <strong>System Ref:</strong> IP-SAKTI-VERIFIED-GATE-PASS
+        </div>
+        <div style="text-align:right">
+          <div style="height:35px"></div>
+          _______________________________________<br>
+          <strong>Signature of Applicant / Authorised Signatory</strong>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer-bar">
+      <button type="button" class="btn-close-modal" onclick="closeNbaModal()">Close</button>
+      <button type="button" class="btn-print" onclick="window.print()">
+        <span>🖨️</span> Print / Save as Official PDF
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Notification System -->
+<div id="toast-container" class="toast-container" aria-live="polite"></div>
 
 </body>
 </html>

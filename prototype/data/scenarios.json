@@ -1,0 +1,51 @@
+{
+  "classical": {
+    "ingredients": [
+      "ashwagandha",
+      "milk"
+    ],
+    "extraction_method": "traditional decoction, sun-dried powder",
+    "intended_use": "general wellness and stress support",
+    "claims_text": "Rejuvenating tonic prepared following traditional method.",
+    "jurisdiction": "IN"
+  },
+  "phytopharma": {
+    "ingredients": [
+      "ashwagandha root"
+    ],
+    "extraction_method": "standardized extract, purified fraction, 98% withanolide content",
+    "intended_use": "clinical anxiety management",
+    "claims_text": "A standardized extract with defined bioactive compounds for a specific therapeutic use.",
+    "jurisdiction": "IN"
+  },
+  "aahar": {
+    "ingredients": [
+      "turmeric",
+      "black pepper",
+      "ginger"
+    ],
+    "extraction_method": "dried and powdered, blended",
+    "intended_use": "daily health drink / functional food supplement",
+    "claims_text": "A dietary nutraceutical supplement for general immunity.",
+    "jurisdiction": "IN"
+  },
+  "patent_proprietary": {
+    "ingredients": [
+      "neem",
+      "synthetic carrier compound"
+    ],
+    "extraction_method": "novel proprietary process, chemically modified extraction",
+    "intended_use": "targeted antimicrobial treatment",
+    "claims_text": "A novel synthesized formulation with a proprietary process not found in classical texts.",
+    "jurisdiction": "IN"
+  },
+  "ambiguous": {
+    "ingredients": [
+      "unlisted proprietary blend"
+    ],
+    "extraction_method": "undisclosed method",
+    "intended_use": "general purpose",
+    "claims_text": "A blend intended for multiple undefined uses.",
+    "jurisdiction": "IN"
+  }
+}
