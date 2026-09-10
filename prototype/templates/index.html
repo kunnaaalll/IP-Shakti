@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IP-SAKTI — Ayurveda IP Navigator</title>
+  <meta name="description" content="Citation-verified IP strategy roadmaps for Ayurveda formulations. Built for SIH26045." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #07080f;
+      --bg2:       #0d0f1a;
+      --bg3:       #131628;
+      --border:    rgba(255,255,255,0.07);
+      --border2:   rgba(255,255,255,0.12);
+      --accent:    #00d9a3;
+      --accent2:   #00b386;
+      --amber:     #f59e0b;
+      --red:       #ef4444;
+      --blue:      #6366f1;
+      --text:      #e8eaf0;
+      --muted:     #8891a8;
+      --radius:    12px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Noise texture overlay ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── Header ── */
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(7,8,15,0.8);
+      backdrop-filter: blur(16px);
+      position: sticky; top: 0; z-index: 100;
+    }
+
+    .logo {
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--accent), var(--blue));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+
+    .logo-text {
+      font-size: 20px; font-weight: 700; letter-spacing: -0.5px;
+    }
+
+    .logo-text span { color: var(--accent); }
+
+    .badge {
+      font-size: 11px; font-weight: 500;
+      background: rgba(0,217,163,0.12);
+      color: var(--accent);
+      border: 1px solid rgba(0,217,163,0.25);
+      padding: 4px 10px; border-radius: 20px;
+    }
+
+    /* ── Layout ── */
+    .main {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      min-height: calc(100vh - 77px);
+    }
+
+    /* ── Left panel ── */
+    .left-panel {
+      border-right: 1px solid var(--border);
+      padding: 32px 28px;
+      display: flex; flex-direction: column; gap: 24px;
+      overflow-y: auto;
+      position: sticky; top: 77px; height: calc(100vh - 77px);
+    }
+
+    .panel-title {
+      font-size: 13px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--muted);
+    }
+
+    /* ── Scenarios ── */
+    .scenarios-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    }
+
+    .scenario-btn {
+      padding: 10px 12px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--muted);
+      font-size: 12px; font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+    }
+
+    .scenario-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0,217,163,0.05);
+    }
+
+    .scenario-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0,217,163,0.08);
+    }
+
+    .scenario-btn.bad-cite-btn {
+      grid-column: 1 / -1;
+      background: rgba(239,68,68,0.06);
+      border-color: rgba(239,68,68,0.2);
+      color: #f87171;
+    }
+
+    .scenario-btn.bad-cite-btn:hover {
+      background: rgba(239,68,68,0.12);
+      border-color: rgba(239,68,68,0.4);
+      color: #ef4444;
+    }
+
+    /* ── Form ── */
+    .form-group {
+      display: flex; flex-direction: column; gap: 6px;
+    }
+
+    label {
+      font-size: 12px; font-weight: 500; color: var(--muted);
+    }
+
+    input, textarea, select {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 13px;
+      padding: 10px 12px;
+      transition: border-color 0.2s;
+      width: 100%;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: rgba(0,217,163,0.4);
+    }
+
+    textarea { min-height: 80px; }
+
+    .hint { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    /* ── Submit button ── */
+    .analyze-btn {
+      padding: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--blue));
+      border: none;
+      border-radius: var(--radius);
+      color: #07080f;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .analyze-btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(255,255,255,0.15);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .analyze-btn:hover::before { opacity: 1; }
+    .analyze-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* ── Right panel ── */
+    .right-panel {
+      padding: 32px 36px;
+      display: flex; flex-direction: column; gap: 28px;
+      overflow-y: auto;
+    }
+
+    /* ── Empty state ── */
+    .empty-state {
+      flex: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 16px; text-align: center;
+      opacity: 0.4; padding: 60px;
+    }
+
+    .empty-icon { font-size: 48px; }
+    .empty-state h2 { font-size: 18px; font-weight: 600; }
+    .empty-state p { font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 340px; }
+
+    /* ── Pipeline stages ── */
+    .pipeline-header {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .pipeline-title { font-size: 18px; font-weight: 700; }
+
+    .classification-badge {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px; font-weight: 600;
+      border: 1px solid;
+    }
+
+    .stages-list {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+
+    .stage-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .stage-card.running  { border-color: rgba(99,102,241,0.5); }
+    .stage-card.done     { border-color: rgba(0,217,163,0.3); }
+    .stage-card.failed   { border-color: rgba(239,68,68,0.4); }
+    .stage-card.retrying { border-color: rgba(245,158,11,0.4); }
+
+    .stage-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 16px; cursor: pointer;
+      user-select: none;
+    }
+
+    .stage-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: 2px solid var(--border2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+      color: var(--muted);
+      flex-shrink: 0;
+      transition: all 0.3s;
+    }
+
+    .stage-card.running  .stage-num { border-color: var(--blue); color: var(--blue); animation: pulse-ring 1s ease-in-out infinite; }
+    .stage-card.done     .stage-num { border-color: var(--accent); color: var(--accent); background: rgba(0,217,163,0.1); }
+    .stage-card.failed   .stage-num { border-color: var(--red); color: var(--red); background: rgba(239,68,68,0.1); }
+    .stage-card.retrying .stage-num { border-color: var(--amber); color: var(--amber); background: rgba(245,158,11,0.1); }
+
+    @keyframes pulse-ring {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0.4); }
+      50%       { box-shadow: 0 0 0 6px rgba(99,102,241,0); }
+    }
+
+    .stage-label { font-size: 14px; font-weight: 600; flex: 1; }
+
+    .stage-status-icon {
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+
+    .stage-body {
+      padding: 0 16px 16px;
+      display: none;
+    }
+
+    .stage-body.open { display: block; }
+
+    .trace-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+
+    .trace-list li {
+      font-size: 12px; color: var(--muted);
+      display: flex; align-items: flex-start; gap: 8px;
+      line-height: 1.5;
+    }
+
+    .trace-list li::before { content: '·'; color: var(--accent); flex-shrink: 0; margin-top: 1px; }
+
+    .chunk-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 10px;
+      background: var(--bg3);
+      border-radius: var(--radius-sm);
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+
+    .chunk-score {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 500;
+      color: var(--accent);
+      background: rgba(0,217,163,0.08);
+      padding: 2px 7px; border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .chunk-label { color: var(--text); font-weight: 500; }
+    .chunk-id    { color: var(--muted); margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+
+    .fail-item {
+      display: flex; align-items: flex-start; gap: 8px;
+      padding: 8px 10px;
+      background: rgba(239,68,68,0.07);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: var(--radius-sm);
+      font-size: 12px; color: #f87171;
+      margin-bottom: 6px;
+    }
+
+    .pass-item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 10px;
+      background: rgba(0,217,163,0.07);
+      border: 1px solid rgba(0,217,163,0.2);
+      border-radius: var(--radius-sm);
+      font-size: 12px; color: var(--accent);
+    }
+
+    /* ── Confidence meter ── */
+    .confidence-block {
+      margin-top: 8px;
+    }
+
+    .conf-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .conf-label { font-size: 12px; color: var(--muted); }
+
+    .conf-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 22px; font-weight: 700;
+      color: var(--accent);
+    }
+
+    .conf-bar-track {
+      height: 6px;
+      background: var(--bg3);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .conf-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--blue));
+      border-radius: 3px;
+      width: 0;
+      transition: width 1s ease-out;
+    }
+
+    /* ── Roadmap ── */
+    .roadmap-section { }
+
+    .section-title {
+      font-size: 16px; font-weight: 700;
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1; height: 1px;
+      background: var(--border);
+    }
+
+    .step-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 10px;
+      animation: slide-up 0.4s ease-out both;
+      border-left: 3px solid;
+    }
+
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-card[data-risk="blocker"] { border-left-color: var(--red); }
+    .step-card[data-risk="high"]    { border-left-color: var(--amber); }
+    .step-card[data-risk="medium"]  { border-left-color: var(--blue); }
+    .step-card[data-risk="low"]     { border-left-color: var(--accent); }
+
+    .step-top {
+      display: flex; align-items: flex-start; gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .risk-badge {
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      flex-shrink: 0; margin-top: 2px;
+    }
+
+    .risk-badge.blocker { background: rgba(239,68,68,0.15); color: #f87171; }
+    .risk-badge.high    { background: rgba(245,158,11,0.15); color: #fbbf24; }
+    .risk-badge.medium  { background: rgba(99,102,241,0.15); color: #818cf8; }
+    .risk-badge.low     { background: rgba(0,217,163,0.12); color: var(--accent); }
+
+    .step-action { font-size: 14px; font-weight: 600; line-height: 1.4; }
+
+    .step-rationale {
+      font-size: 13px; color: var(--muted);
+      line-height: 1.6; margin-bottom: 10px;
+    }
+
+    .step-citations {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+
+    .citation-chip {
+      padding: 4px 10px;
+      background: rgba(0,217,163,0.07);
+      border: 1px solid rgba(0,217,163,0.2);
+      border-radius: 4px;
+      font-size: 11px; font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+    }
+
+    .timeline-note {
+      margin-top: 8px;
+      font-size: 11px; color: var(--muted);
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* ── TKRC block ── */
+    .tkrc-card {
+      background: rgba(99,102,241,0.07);
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      display: flex; align-items: center; gap: 14px;
+      animation: slide-up 0.4s ease-out;
+    }
+
+    .tkrc-icon { font-size: 24px; }
+
+    .tkrc-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; font-weight: 600;
+      color: #818cf8;
+    }
+
+    .tkrc-name { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* ── Escalation banner ── */
+    .escalation-banner {
+      background: rgba(245,158,11,0.07);
+      border: 1px solid rgba(245,158,11,0.25);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      display: flex; align-items: flex-start; gap: 14px;
+      animation: slide-up 0.4s ease-out;
+    }
+
+    .escalation-banner .esc-icon { font-size: 22px; flex-shrink: 0; }
+    .escalation-banner h3 { font-size: 14px; font-weight: 700; color: #fbbf24; margin-bottom: 4px; }
+    .escalation-banner p  { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* ── Spinner ── */
+    .spinner {
+      display: inline-block;
+      width: 14px; height: 14px;
+      border: 2px solid rgba(99,102,241,0.3);
+      border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">⚖️</div>
+    <div class="logo-text">IP-<span>SAKTI</span></div>
+  </div>
+  <span class="badge">SIH26045 · Proof of Concept</span>
+</header>
+
+<div class="main">
+
+  <!-- ── Left Panel ── -->
+  <aside class="left-panel">
+    <div>
+      <p class="panel-title" style="margin-bottom:12px">Quick Scenarios</p>
+      <div class="scenarios-grid">
+        <button class="scenario-btn" data-key="classical">🌿 Classical</button>
+        <button class="scenario-btn" data-key="phytopharma">🧪 Phytopharma</button>
+        <button class="scenario-btn" data-key="aahar">🥗 Aahar</button>
+        <button class="scenario-btn" data-key="patent_proprietary">🔬 Patent &amp; Prop.</button>
+        <button class="scenario-btn" data-key="ambiguous">❓ Ambiguous</button>
+        <button class="scenario-btn bad-cite-btn" data-key="bad-citation">⚡ Demo: Hallucination Catch</button>
+      </div>
+    </div>
+
+    <div style="height:1px;background:var(--border)"></div>
+
+    <form id="formulation-form" autocomplete="off">
+      <div style="display:flex;flex-direction:column;gap:14px">
+
+        <div class="form-group">
+          <label for="ingredients">Ingredients</label>
+          <input id="ingredients" name="ingredients" type="text" placeholder="ashwagandha, milk" />
+          <span class="hint">Comma-separated</span>
+        </div>
+
+        <div class="form-group">
+          <label for="extraction_method">Extraction / Process</label>
+          <input id="extraction_method" name="extraction_method" type="text" placeholder="traditional decoction, sun-dried powder" />
+        </div>
+
+        <div class="form-group">
+          <label for="intended_use">Intended Use</label>
+          <input id="intended_use" name="intended_use" type="text" placeholder="general wellness and stress support" />
+        </div>
+
+        <div class="form-group">
+          <label for="claims_text">Claims Text</label>
+          <textarea id="claims_text" name="claims_text" placeholder="Rejuvenating tonic prepared following traditional method."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="jurisdiction">Jurisdiction</label>
+          <select id="jurisdiction" name="jurisdiction">
+            <option value="IN">India (IN)</option>
+            <option value="INTL">India + International</option>
+          </select>
+        </div>
+
+        <button type="submit" class="analyze-btn" id="analyze-btn">
+          Analyze Formulation →
+        </button>
+
+      </div>
+    </form>
+  </aside>
+
+  <!-- ── Right Panel ── -->
+  <main class="right-panel" id="right-panel">
+
+    <div class="empty-state" id="empty-state">
+      <div class="empty-icon">⚖️</div>
+      <h2>Ready to Analyze</h2>
+      <p>Select a demo scenario or enter a custom formulation to run the citation-verified IP pipeline.</p>
+    </div>
+
+    <!-- pipeline stages (hidden until run) -->
+    <div id="pipeline-view" style="display:none">
+
+      <div class="pipeline-header">
+        <span class="pipeline-title">Pipeline Execution</span>
+        <span class="classification-badge" id="cls-badge" style="display:none"></span>
+      </div>
+
+      <div class="stages-list" id="stages-list"></div>
+
+      <!-- TKRC block -->
+      <div id="tkrc-block" style="display:none"></div>
+
+      <!-- Confidence -->
+      <div id="confidence-block" style="display:none">
+        <div class="stage-card done" style="margin-top:4px">
+          <div class="stage-header" style="cursor:default">
+            <div class="confidence-block" style="width:100%">
+              <div class="conf-row">
+                <span class="conf-label">Confidence Score</span>
+                <span class="conf-value" id="conf-value">—</span>
+              </div>
+              <div class="conf-bar-track">
+                <div class="conf-bar-fill" id="conf-bar"></div>
+              </div>
+              <p style="font-size:11px;color:var(--muted);margin-top:6px" id="conf-note"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Escalation banner -->
+      <div id="escalation-block" style="display:none"></div>
+
+      <!-- Roadmap -->
+      <div id="roadmap-block" style="display:none">
+        <div class="section-title">IP Strategy Roadmap</div>
+        <div id="roadmap-steps"></div>
+        <p style="font-size:11px;color:var(--muted);margin-top:12px;line-height:1.6">
+          ℹ️ Informational only — not legal advice. All claims above are verified against retrieved statutory text.
+          For formal IP proceedings, consult a registered patent agent.
+        </p>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+// ── Load scenarios ──────────────────────────────────────────────────────
+let SCENARIOS = {};
+fetch('/api/scenarios').then(r => r.json()).then(d => { SCENARIOS = d; });
+
+// ── Scenario buttons ────────────────────────────────────────────────────
+document.querySelectorAll('.scenario-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const key = btn.dataset.key;
+    if (key === 'bad-citation') {
+      // fill with patent_proprietary formulation
+      fillForm(SCENARIOS['patent_proprietary']);
+      $('analyze-btn').dataset.forceBad = 'true';
+      $('analyze-btn').textContent = '⚡ Run Hallucination Catch Demo →';
+    } else {
+      fillForm(SCENARIOS[key]);
+      delete $('analyze-btn').dataset.forceBad;
+      $('analyze-btn').textContent = 'Analyze Formulation →';
+    }
+  });
+});
+
+function fillForm(f) {
+  if (!f) return;
+  $('ingredients').value      = (f.ingredients || []).join(', ');
+  $('extraction_method').value = f.extraction_method || '';
+  $('intended_use').value      = f.intended_use      || '';
+  $('claims_text').value       = f.claims_text       || '';
+  $('jurisdiction').value      = f.jurisdiction      || 'IN';
+}
+
+// ── Form submit ─────────────────────────────────────────────────────────
+$('formulation-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const forceBad = $('analyze-btn').dataset.forceBad === 'true';
+  startAnalysis(forceBad);
+});
+
+// ── Pipeline state ──────────────────────────────────────────────────────
+const STAGE_META = [
+  { id: 1, label: 'Deterministic Classification', icon: '🌿' },
+  { id: 2, label: 'Scoped Hybrid Retrieval',      icon: '🔍' },
+  { id: 3, label: 'Roadmap Synthesis',            icon: '📝' },
+  { id: 4, label: 'Citation Verifier Gate',       icon: '🔒' },
+  { id: 5, label: 'Confidence & Escalation',      icon: '📊' },
+];
+
+let stageEls = {};
+
+function resetUI() {
+  $('empty-state').style.display = 'none';
+  $('pipeline-view').style.display = 'block';
+  $('cls-badge').style.display = 'none';
+  $('tkrc-block').style.display = 'none';
+  $('confidence-block').style.display = 'none';
+  $('escalation-block').style.display = 'none';
+  $('roadmap-block').style.display = 'none';
+  $('roadmap-steps').innerHTML = '';
+  stageEls = {};
+
+  const list = $('stages-list');
+  list.innerHTML = '';
+
+  STAGE_META.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'stage-card';
+    card.id = `stage-card-${m.id}`;
+    card.innerHTML = `
+      <div class="stage-header" onclick="toggleBody(${m.id})">
+        <div class="stage-num">${m.id}</div>
+        <span class="stage-label">${m.icon} ${m.label}</span>
+        <span class="stage-status-icon" id="stage-icon-${m.id}">—</span>
+      </div>
+      <div class="stage-body" id="stage-body-${m.id}"></div>
+    `;
+    list.appendChild(card);
+    stageEls[m.id] = card;
+  });
+}
+
+function toggleBody(id) {
+  const body = $(`stage-body-${id}`);
+  body.classList.toggle('open');
+}
+
+function setStageRunning(id, label) {
+  const card = $(`stage-card-${id}`);
+  card.className = 'stage-card running';
+  if (label) card.querySelector('.stage-label').textContent =
+    STAGE_META.find(m => m.id === id)?.icon + ' ' + label;
+  $(`stage-icon-${id}`).innerHTML = '<span class="spinner"></span>';
+  const body = $(`stage-body-${id}`);
+  body.innerHTML = '';
+  body.classList.add('open');
+}
+
+function setStageState(id, state) {
+  const card = $(`stage-card-${id}`);
+  card.className = `stage-card ${state}`;
+  const icons = { done: '✓', failed: '✗', retrying: '↺' };
+  $(`stage-icon-${id}`).textContent = icons[state] || '—';
+}
+
+// ── SSE-driven pipeline ─────────────────────────────────────────────────
+function startAnalysis(forceBad = false) {
+  resetUI();
+  $('analyze-btn').disabled = true;
+
+  const params = new URLSearchParams({
+    ingredients:       $('ingredients').value,
+    extraction_method: $('extraction_method').value,
+    intended_use:      $('intended_use').value,
+    claims_text:       $('claims_text').value,
+    jurisdiction:      $('jurisdiction').value,
+    force_bad_citation: forceBad ? 'true' : 'false',
+  });
+
+  const es = new EventSource(`/api/analyze?${params}`);
+
+  es.addEventListener('stage_start', e => {
+    const d = JSON.parse(e.data);
+    setStageRunning(d.stage, d.label);
+  });
+
+  es.addEventListener('stage_done', e => {
+    const d = JSON.parse(e.data);
+    handleStageDone(d);
+  });
+
+  es.addEventListener('complete', e => {
+    const d = JSON.parse(e.data);
+    handleComplete(d);
+    es.close();
+    $('analyze-btn').disabled = false;
+  });
+
+  es.onerror = () => {
+    es.close();
+    $('analyze-btn').disabled = false;
+  };
+}
+
+function handleStageDone(d) {
+  const id = d.stage;
+
+  if (id === 1) {
+    // Classification
+    const hasFailed = false;
+    setStageState(id, 'done');
+    const body = $(`stage-body-${id}`);
+    body.innerHTML = `<ul class="trace-list">${
+      (d.trace||[]).map(t => `<li>${t}</li>`).join('')
+    }</ul>`;
+    body.classList.add('open');
+
+    // Show badge
+    const badge = $('cls-badge');
+    const clsColors = {
+      'Classical':         ['#00d9a3','rgba(0,217,163,0.12)'],
+      'Phytopharmaceutical':['#818cf8','rgba(99,102,241,0.12)'],
+      'Aahar':             ['#fbbf24','rgba(245,158,11,0.12)'],
+      'Patent&Proprietary':['#60a5fa','rgba(96,165,250,0.12)'],
+      'Ambiguous':         ['#f87171','rgba(239,68,68,0.12)'],
+    };
+    const [color, bg] = clsColors[d.classification] || ['#8891a8','rgba(136,145,168,0.1)'];
+    badge.textContent = d.classification;
+    badge.style.cssText = `color:${color};background:${bg};border-color:${color}40;display:inline-block`;
+  }
+
+  if (id === 2) {
+    setStageState(id, 'done');
+    const body = $(`stage-body-${id}`);
+    if (d.chunks && d.chunks.length) {
+      body.innerHTML = d.chunks.map(c => `
+        <div class="chunk-row">
+          <span class="chunk-score">${c.relevance_score.toFixed(3)}</span>
+          <span class="chunk-label">${c.act} · §${c.section}</span>
+          <span class="chunk-id">${c.chunk_id}</span>
+        </div>
+      `).join('');
+    } else {
+      body.innerHTML = '<p style="font-size:12px;color:var(--muted)">No chunks retrieved for this classification.</p>';
+    }
+    body.classList.add('open');
+  }
+
+  if (id === 3) {
+    const attempt = d.attempt || 0;
+    setStageState(id, attempt === 0 ? 'done' : 'retrying');
+    // Just show step count for now; full steps shown in roadmap
+    const body = $(`stage-body-${id}`);
+    body.innerHTML = `<p style="font-size:12px;color:var(--muted)">${d.steps.length} roadmap step(s) drafted.</p>`;
+    body.classList.add('open');
+  }
+
+  if (id === 4) {
+    setStageState(id, d.passed ? 'done' : 'failed');
+    const body = $(`stage-body-${id}`);
+    if (d.passed) {
+      body.innerHTML = `<div class="pass-item">✓ All citations verified against retrieved statutory chunks.</div>`;
+    } else {
+      body.innerHTML = (d.failed_claims || []).map(f =>
+        `<div class="fail-item">✗ ${f}</div>`
+      ).join('') + `<p style="font-size:12px;color:var(--muted);margin-top:8px">→ Retrying synthesis…</p>`;
+    }
+    body.classList.add('open');
+  }
+
+  if (id === 5) {
+    setStageState(id, 'done');
+    const conf = d.confidence_score;
+
+    $('conf-value').textContent = conf.toFixed(4);
+    $('confidence-block').style.display = 'block';
+    setTimeout(() => {
+      $('conf-bar').style.width = (conf * 100) + '%';
+    }, 50);
+
+    const note = conf >= 0.75 ? 'High confidence — ready to deliver.'
+                : conf >= 0.5  ? 'Sufficient confidence — delivered with caution.'
+                               : 'Low confidence — routed to human review.';
+    $('conf-note').textContent = note;
+  }
+}
+
+function handleComplete(d) {
+  // TKRC
+  if (d.tkrc_match) {
+    const m = d.tkrc_match;
+    $('tkrc-block').style.display = 'block';
+    $('tkrc-block').innerHTML = `
+      <div class="tkrc-card">
+        <span class="tkrc-icon">📚</span>
+        <div>
+          <div class="tkrc-code">${m.tkrc_code}</div>
+          <div class="tkrc-name">${m.name} · ${m.source_text}</div>
+        </div>
+        <span style="margin-left:auto;font-size:11px;color:var(--muted)">TKRC directional signal</span>
+      </div>
+    `;
+  }
+
+  // Escalation
+  if (d.status === 'escalated') {
+    $('escalation-block').style.display = 'block';
+    const reasons = {
+      ambiguous_classification: 'The formulation could not be confidently classified. A human IP reviewer will assess it and respond.',
+      low_confidence:           'The pipeline\'s confidence score fell below the threshold. A reviewer will validate before delivery.',
+      system_citation_failure:  'Citation verification failed after the maximum number of retries. This analysis has been flagged for expert review.',
+    };
+    $('escalation-block').innerHTML = `
+      <div class="escalation-banner">
+        <span class="esc-icon">⚠️</span>
+        <div>
+          <h3>Routed to Human Review</h3>
+          <p>${reasons[d.escalation_reason] || 'Escalated for expert review.'}</p>
+          <p style="margin-top:6px;font-size:11px;color:var(--accent)">Reason code: ${d.escalation_reason}</p>
+        </div>
+      </div>
+    `;
+  }
+
+  // Roadmap
+  if (d.steps && d.steps.length) {
+    $('roadmap-block').style.display = 'block';
+    const steps = $('roadmap-steps');
+    d.steps.forEach((s, i) => {
+      const card = document.createElement('div');
+      card.className = 'step-card';
+      card.dataset.risk = s.risk_level;
+      card.style.animationDelay = (i * 0.08) + 's';
+      card.innerHTML = `
+        <div class="step-top">
+          <span class="risk-badge ${s.risk_level}">${s.risk_level.toUpperCase()}</span>
+          <span class="step-action">${s.action}</span>
+        </div>
+        <p class="step-rationale">${s.rationale}</p>
+        ${s.citations && s.citations.length ? `
+          <div class="step-citations">
+            ${s.citations.map(c =>
+              `<span class="citation-chip" title="${c.chunk_id}">${c.act} §${c.section}</span>`
+            ).join('')}
+          </div>
+        ` : ''}
+        ${s.timeline_note ? `
+          <div class="timeline-note">🕐 ${s.timeline_note}</div>
+        ` : ''}
+      `;
+      steps.appendChild(card);
+    });
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Ashwagandha Churna",
+    "source_text": "Charaka Samhita, Chikitsa Sthana",
+    "tkrc_code": "TKRC-A61K-36/00-ASH",
+    "core_ingredients": ["ashwagandha", "withania somnifera"],
+    "note": "Classical rasayana formulation — base form is well-documented traditional knowledge."
+  },
+  {
+    "name": "Turmeric-Honey Paste",
+    "source_text": "Sushruta Samhita, Sutra Sthana",
+    "tkrc_code": "TKRC-A61K-36/00-TUR",
+    "core_ingredients": ["turmeric", "curcuma longa", "honey"],
+    "note": "Classical wound-care preparation, widely documented across multiple classical texts."
+  },
+  {
+    "name": "Triphala Churna",
+    "source_text": "Sharangdhara Samhita",
+    "tkrc_code": "TKRC-A61K-36/00-TRI",
+    "core_ingredients": ["amla", "haritaki", "bibhitaki"],
+    "note": "Classical three-fruit formulation, extremely well documented traditional knowledge."
+  },
+  {
+    "name": "Brahmi Ghrita",
+    "source_text": "Bhaishajya Ratnavali",
+    "tkrc_code": "TKRC-A61K-36/00-BRA",
+    "core_ingredients": ["brahmi", "bacopa monnieri", "ghee"],
+    "note": "Classical medicated-ghee preparation for cognitive support."
+  },
+  {
+    "name": "Neem-Tulsi Decoction",
+    "source_text": "Charaka Samhita, Sutra Sthana",
+    "tkrc_code": "TKRC-A61K-36/00-NEE",
+    "core_ingredients": ["neem", "tulsi", "azadirachta indica"],
+    "note": "Classical antimicrobial decoction, base form widely documented."
+  }
+]

@@ -1,0 +1,6 @@
+# Core pipeline (classifier, retrieval, citation verifier) uses only the
+# Python standard library — no install needed to run the rule-based demo.
+#
+# Optional, only if you pass --use-llm and want real LLM synthesis instead
+# of the deterministic rule-based drafter:
+anthropic>=0.40.0

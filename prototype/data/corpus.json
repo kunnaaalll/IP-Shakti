@@ -1,0 +1,107 @@
+[
+  {
+    "chunk_id": "PA-3P",
+    "act": "Patents Act, 1970",
+    "section": "3(p)",
+    "text": "An invention which, in effect, is traditional knowledge or which is an aggregation or duplication of known properties of traditionally known component or components is not an invention within the meaning of this Act.",
+    "applies_to": ["Classical", "Ambiguous"]
+  },
+  {
+    "chunk_id": "PA-3D",
+    "act": "Patents Act, 1970",
+    "section": "3(d)",
+    "text": "The mere discovery of a new form of a known substance which does not result in enhancement of the known efficacy of that substance is not patentable, unless it differs significantly in properties with regard to efficacy.",
+    "applies_to": ["Patent&Proprietary", "Phytopharmaceutical"]
+  },
+  {
+    "chunk_id": "PA-2J",
+    "act": "Patents Act, 1970",
+    "section": "2(1)(j)",
+    "text": "'Invention' means a new product or process involving an inventive step and capable of industrial application.",
+    "applies_to": ["Patent&Proprietary", "Phytopharmaceutical", "Ambiguous"]
+  },
+  {
+    "chunk_id": "BDA-3",
+    "act": "Biological Diversity Act, 2002",
+    "section": "3",
+    "text": "No person shall, without previous approval of the National Biodiversity Authority, obtain any biological resource occurring in India for research or for commercial utilisation.",
+    "applies_to": ["Patent&Proprietary", "Phytopharmaceutical", "Classical"]
+  },
+  {
+    "chunk_id": "BDA-6",
+    "act": "Biological Diversity Act, 2002",
+    "section": "6",
+    "text": "No person shall apply for any intellectual property right based on any research or information on a biological resource obtained from India without obtaining the previous approval of the National Biodiversity Authority before making such application.",
+    "applies_to": ["Patent&Proprietary", "Phytopharmaceutical"]
+  },
+  {
+    "chunk_id": "BDA-7",
+    "act": "Biological Diversity Act, 2002",
+    "section": "7",
+    "text": "No person shall obtain any biological resource for commercial utilisation without giving prior intimation to the concerned State Biodiversity Board.",
+    "applies_to": ["Patent&Proprietary", "Phytopharmaceutical", "Aahar"]
+  },
+  {
+    "chunk_id": "FSSAI-22",
+    "act": "Food Safety and Standards Act, 2006",
+    "section": "22",
+    "text": "No person shall manufacture, distribute, sell or import any novel food, nutraceutical, or health supplement except in accordance with regulations specified by the Food Authority.",
+    "applies_to": ["Aahar"]
+  },
+  {
+    "chunk_id": "FSSAI-REG-2016",
+    "act": "FSSAI (Nutraceuticals) Regulations, 2016",
+    "section": "Reg. 5",
+    "text": "Health supplements and nutraceuticals shall not contain ingredients that have not been demonstrated to be safe for consumption, and label claims shall not create a false impression of therapeutic efficacy.",
+    "applies_to": ["Aahar"]
+  },
+  {
+    "chunk_id": "GI-2",
+    "act": "Geographical Indications of Goods (Registration and Protection) Act, 1999",
+    "section": "2(1)(e)",
+    "text": "'Geographical indication' means an indication which identifies goods as originating in a territory where a given quality, reputation or other characteristic is essentially attributable to its geographical origin.",
+    "applies_to": ["Classical", "Ambiguous"]
+  },
+  {
+    "chunk_id": "GI-11",
+    "act": "Geographical Indications of Goods (Registration and Protection) Act, 1999",
+    "section": "11",
+    "text": "Any association of persons or producers claiming to be the producers of a good may apply in writing for the registration of a geographical indication in relation to such goods.",
+    "applies_to": ["Classical", "Ambiguous"]
+  },
+  {
+    "chunk_id": "TM-9",
+    "act": "Trade Marks Act, 1999",
+    "section": "9",
+    "text": "A trade mark shall not be registered if it is devoid of any distinctive character, or consists exclusively of marks or indications which have become customary in the current language.",
+    "applies_to": ["Classical", "Ambiguous"]
+  },
+  {
+    "chunk_id": "D&C-3H",
+    "act": "Drugs and Cosmetics Act, 1940",
+    "section": "3(h)",
+    "text": "'Patent or proprietary medicine' means a drug which is a remedy or prescription claimed to have a specific efficacy for a specific ailment, not included in the Ayurvedic, Siddha or Unani texts specified in the First Schedule.",
+    "applies_to": ["Patent&Proprietary"]
+  },
+  {
+    "chunk_id": "D&C-33EED",
+    "act": "Drugs and Cosmetics Act, 1940",
+    "section": "33EED",
+    "text": "Standards for Ayurvedic, Siddha and Unani drugs shall be such as are specified in the Ayurvedic, Siddha or Unani Pharmacopoeia, or, if not specified, in the authoritative texts prescribed under this Act.",
+    "applies_to": ["Classical", "Phytopharmaceutical"]
+  },
+  {
+    "chunk_id": "PHYTO-DEF",
+    "act": "AYUSH Phytopharmaceutical Drugs Notification, 2015",
+    "section": "Def. 1",
+    "text": "'Phytopharmaceutical drug' means a purified and standardized fraction with defined minimum four bio-active or phytochemical compounds of an extract of a medicinal plant or its part, for internal or external use, intended for diagnosis, treatment, mitigation or prevention of a disease.",
+    "applies_to": ["Phytopharmaceutical"]
+  },
+  {
+    "chunk_id": "WIPO-GRATK",
+    "act": "WIPO Draft Provisions on GR, TK and TCEs",
+    "section": "Art. 5",
+    "text": "Member states are encouraged to require disclosure of the source or origin of genetic resources and associated traditional knowledge used in claimed inventions in patent applications.",
+    "applies_to": ["Patent&Proprietary", "Phytopharmaceutical", "Ambiguous"]
+  }
+]
